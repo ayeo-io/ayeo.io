@@ -1,0 +1,171 @@
+---
+layout: base.njk
+bodyClass: home
+scripts: ["/assets/js/site.js"]
+---
+{%- set riskWords = ["", "Low", "Medium", "High"] %}
+{%- set famWords = ["", "New to us", "Some", "Well known"] %}
+{%- set sizeWords = ["", "Small", "Medium", "Large"] %}
+{%- macro meter(label, level, words) %}
+<div class="meter" data-level="{{ level }}">
+  <dt>{{ label }}</dt>
+  <dd><span class="ticks" aria-hidden="true"><i></i><i></i><i></i></span> {{ words[level] }}</dd>
+</div>
+{%- endmacro %}
+
+<section class="hero" id="compass">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="product"><img src="/assets/compass-mark.png" width="28" height="28" alt=""> Compass, from ayeo</p>
+      <h1>Enough process for the work at hand. No&nbsp;more.</h1>
+      <p class="lede">Compass is an open-source plugin for Claude Code. It assesses each change by risk, familiarity, size and goal, then sets the process to match: what to write, what to check, and when to ask a human.</p>
+      <p class="actions">
+        <a class="button" href="#install">Install Compass</a>
+        <a class="button quiet" href="{{ site.compass.url }}">Read the code on GitHub</a>
+      </p>
+    </div>
+
+    <div class="instrument" data-assessor>
+      <p class="instrument-q" id="assessor-q">Pick a change to see how Compass would handle it</p>
+      <div class="choices" role="tablist" aria-labelledby="assessor-q">
+        {%- for a in assessments %}
+        <button type="button" role="tab" id="tab-{{ a.id }}" aria-controls="panel-{{ a.id }}" aria-selected="{{ 'true' if loop.first else 'false' }}" {% if not loop.first %}tabindex="-1"{% endif %}>{{ a.change }}</button>
+        {%- endfor %}
+      </div>
+      {%- for a in assessments %}
+      <div class="readout" role="tabpanel" id="panel-{{ a.id }}" aria-labelledby="tab-{{ a.id }}" {% if not loop.first %}data-hidden{% endif %}>
+        <p class="prompt"><span aria-hidden="true">&gt;</span> /compass:assess "{{ a.change }}"</p>
+        <dl class="assessment">
+          {{ meter("Risk", a.risk, riskWords) }}
+          {{ meter("Familiarity", a.familiarity, famWords) }}
+          {{ meter("Size", a.size, sizeWords) }}
+          <div class="meter goal"><dt>Goal</dt><dd>{{ a.goal }}</dd></div>
+        </dl>
+        <div class="approach">
+          <p class="approach-name">{{ a.approach }}</p>
+          <p>{{ a.summary }}</p>
+        </div>
+        <dl class="plan">
+          <div><dt>Writes</dt><dd><ul>{% for w in a.writes %}<li>{{ w }}</li>{% endfor %}</ul></dd></div>
+          <div><dt>Checks</dt><dd><ul>{% for c in a.checks %}<li>{{ c }}</li>{% endfor %}</ul></dd></div>
+          <div><dt>Asks you</dt><dd>{{ a.asks }}</dd></div>
+          <div><dt>Agents in parallel</dt><dd>{{ a.agents }}</dd></div>
+          <div class="omitted"><dt>Leaves out, and says why</dt><dd>{{ a.leavesOut }}</dd></div>
+        </dl>
+      </div>
+      {%- endfor %}
+      <p class="instrument-note">Illustrative. In your project, your routing policy makes the call.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="install">
+  <div class="wrap two-col">
+    <div>
+      <h2>Install it in Claude Code</h2>
+      <p>Run these two commands inside Claude Code. You need Python 3.10 or later. The default guardrails work straight away; project setup is optional.</p>
+    </div>
+    <div class="code-stack">
+      <div class="code"><code>/plugin marketplace add {{ site.compass.repo }}</code><button type="button" class="copy" data-copy="/plugin marketplace add {{ site.compass.repo }}">Copy</button></div>
+      <div class="code"><code>/plugin install compass@compass</code><button type="button" class="copy" data-copy="/plugin install compass@compass">Copy</button></div>
+      <p class="code-after">Then describe the work:</p>
+      <div class="code"><code>/compass:assess "Add rate limiting to the public API"</code><button type="button" class="copy" data-copy='/compass:assess "Add rate limiting to the public API"'>Copy</button></div>
+      <p class="small">Prefer source? <a href="{{ site.compass.url }}#start-here">Clone and install from GitHub</a>. Compass sits alongside your CI. It doesn't replace your tests, linting or security scanning.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="prose-block">
+      <h2>You don't pick the process. The work does.</h2>
+      <p>A typo fix shouldn't need an architecture pack. A payments rewrite shouldn't start from an unstructured prompt. Most spec-driven setups give you one workflow for everything, or leave you to choose one each time.</p>
+      <p>Compass puts the judgement in one place: the assessment. Everything after it is deterministic. The same assessment under the same policy gives the same approach, every time, so you can see why a change got the process it did and argue with the policy rather than the agent.</p>
+    </div>
+
+    <figure class="pipeline">
+      <ol>
+        <li>assess</li><li>define</li><li>plan</li><li>implement</li><li>verify</li><li>ship</li>
+      </ol>
+      <figcaption>Every change goes through the same six stages. How deep each one goes is what changes.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section tinted">
+  <div class="wrap">
+    <h2>Rigour without ritual</h2>
+    <div class="rules">
+      <div>
+        <h3>Guardrails</h3>
+        <p>Hard, checkable and blocking. The CLI enforces them, so they're real rather than aspirational.</p>
+        <ul>
+          <li>Tested before it ships</li>
+          <li>Acceptance defined before implementation</li>
+          <li>Every change traceable to what asked for it</li>
+          <li>Evidence, not assertion</li>
+          <li>A human approves anything irreversible</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Strategies</h3>
+        <p>Strong defaults that apply when they add value, and step aside when they don't.</p>
+        <ul>
+          <li>Behaviour-driven specs</li>
+          <li>Test-driven development</li>
+          <li>Architecture decision records</li>
+          <li>Visual architecture models</li>
+          <li>Parallel agents in isolated worktrees</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap two-col">
+    <div>
+      <h2>Every change leaves a record</h2>
+      <p>Each issue gets a folder you can review and resume from, without relying on chat history. It shows the current decision, what needs your approval, the approach Compass chose, what it left out and why, and the evidence behind each gate.</p>
+      <p>Another session, or another person, can pick it up from there.</p>
+    </div>
+    <pre class="tree" aria-label="Example record folder"><code>.compass/work/rate-limiting/
+├── dashboard        <span>current decision, what needs approval</span>
+├── approach         <span>what was chosen, and what was left out</span>
+├── spec.feature     <span>the behaviour, in Gherkin</span>
+├── design           <span>proportionate to the risk</span>
+└── evidence/        <span>red, green and gate records</span></code></pre>
+  </div>
+</section>
+
+<section class="section tinted">
+  <div class="wrap">
+    <h2>Built to port</h2>
+    <p class="narrow">Compass runs on Claude Code today. The core is split so a future runtime adapter can reuse the rules rather than reimplement them.</p>
+    <dl class="layers">
+      <div><dt>Methodology</dt><dd>Plain-language guidance, governance and templates.</dd></div>
+      <div><dt>Kit</dt><dd>The runtime-neutral Python CLI, schemas and policy engine.</dd></div>
+      <div><dt>Adapter</dt><dd>The commands, agents, skills and hooks for Claude Code.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="section" id="news">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>We write the press release first</h2>
+      <a href="/news/">All news</a>
+    </div>
+    <p class="narrow">Before we build anything, we write the announcement and the FAQ as if it had already shipped. When we commit to one, it goes up here with its status, so you can see what's coming and tell us early if we've got it wrong.</p>
+    {%- set latest = collections.news | head(3) %}
+    {%- if latest.length %}
+    <ul class="news-list">
+      {%- for post in latest %}
+      {% include "news-item.njk" %}
+      {%- endfor %}
+    </ul>
+    {%- else %}
+    <p>Nothing published yet. <a href="/news/feed.xml">Follow the feed</a> to hear about the first one.</p>
+    {%- endif %}
+  </div>
+</section>

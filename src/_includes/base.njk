@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- set pageTitle = (title + " - ayeo") if title else "ayeo - open-source tools for building software with AI agents" %}
+  {%- set pageDescription = summary or subtitle or site.description %}
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ pageDescription }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta name="theme-color" content="#f2f5f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a1424" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="{{ 'article' if layout == 'post.njk' else 'website' }}">
+  <meta property="og:site_name" content="ayeo">
+  <meta property="og:title" content="{{ title or 'ayeo' }}">
+  <meta property="og:description" content="{{ pageDescription }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/assets/mark-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/mark-192.png">
+  <link rel="alternate" type="application/atom+xml" title="ayeo news" href="/news/feed.xml">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body class="{{ bodyClass }}">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="masthead">
+    <div class="wrap masthead-inner">
+      <a class="brand" href="/" aria-label="ayeo home">
+        <img src="/assets/mark-96.png" width="32" height="32" alt="">
+        <span>ayeo</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="/#compass" {% if page.url == '/' %}aria-current="page"{% endif %}>Compass</a>
+        <a href="/news/" {% if '/news/' in page.url %}aria-current="page"{% endif %}>News</a>
+        <a href="{{ site.githubOrg }}">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    {{ content | safe }}
+  </main>
+
+  <footer class="colophon">
+    <div class="wrap colophon-inner">
+      <p><img src="/assets/mark-96.png" width="20" height="20" alt=""> ayeo makes open-source tools for building software with AI agents.</p>
+      <ul>
+        <li><a href="{{ site.compass.url }}">Compass on GitHub</a></li>
+        <li><a href="/news/">News</a></li>
+        <li><a href="/news/feed.xml">Atom feed</a></li>
+      </ul>
+      <p class="small">Compass is released under the {{ site.compass.licence }} licence. This site sets no cookies and runs no tracking.</p>
+    </div>
+  </footer>
+  {%- if scripts %}{% for s in scripts %}
+  <script src="{{ s }}" defer></script>{% endfor %}{% endif %}
+</body>
+</html>

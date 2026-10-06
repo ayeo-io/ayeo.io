@@ -1,0 +1,41 @@
+---
+layout: base.njk
+---
+<article class="section post">
+  <div class="wrap post-wrap">
+    <p class="back"><a href="/news/">All news</a></p>
+    <header class="post-head">
+      <p class="news-meta">
+        {%- if status %}<span class="status status-{{ status }}">{{ status | statusLabel }}</span>{% endif %}
+        <time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time>
+        {%- if draft %}<span class="status status-draft">Draft - not published</span>{% endif %}
+      </p>
+      <h1>{{ title }}</h1>
+      {%- if subtitle %}<p class="lede">{{ subtitle }}</p>{% endif %}
+    </header>
+
+    {%- if status %}
+    <aside class="status-box status-box-{{ status }}">
+      <p><strong>{{ status | statusLabel }}.</strong> {{ statusUpdate or (status | statusNote) }}</p>
+      {%- if status == "shipped" and shipped %}<p>Shipped {{ shipped | readableDate }}{% if release %} in <a href="{{ release.url }}">{{ release.name }}</a>{% endif %}.</p>{% endif %}
+      {%- if status in ["planned", "building"] %}<p>This was written before the work was done. <a href="{{ site.compass.url }}/discussions">Tell us what we've got wrong</a>.</p>{% endif %}
+    </aside>
+    {%- endif %}
+
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+
+    {%- if faq and faq.length %}
+    <section class="faq" aria-labelledby="faq-h">
+      <h2 id="faq-h">Frequently asked questions</h2>
+      {%- for item in faq %}
+      <div class="faq-item">
+        <h3>{{ item.q }}</h3>
+        <div class="prose">{{ item.a | renderContent("md") | safe }}</div>
+      </div>
+      {%- endfor %}
+    </section>
+    {%- endif %}
+  </div>
+</article>

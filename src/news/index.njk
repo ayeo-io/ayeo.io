@@ -1,0 +1,32 @@
+---
+layout: base.njk
+permalink: /news/
+title: News
+summary: What ayeo plans to build, written as a press release and FAQ before we build it.
+---
+<section class="section page-head">
+  <div class="wrap">
+    <h1>News</h1>
+    <p class="lede narrow">We work backwards. Before building anything we write the press release and FAQ as if it had shipped. When we commit to one, we publish it here and keep its status up to date as the work moves.</p>
+    <dl class="status-key">
+      {%- for s in ["planned", "building", "shipped", "shelved"] %}
+      <div><dt><span class="status status-{{ s }}">{{ s | statusLabel }}</span></dt><dd>{{ s | statusNote }}</dd></div>
+      {%- endfor %}
+    </dl>
+    <p class="small"><a href="/news/feed.xml">Subscribe with the Atom feed</a> to hear about new posts and status changes.</p>
+  </div>
+</section>
+
+<section class="section news-index">
+  <div class="wrap">
+    {%- if collections.news.length %}
+    <ul class="news-list">
+      {%- for post in collections.news %}
+      {% include "news-item.njk" %}
+      {%- endfor %}
+    </ul>
+    {%- else %}
+    <p>Nothing published yet.</p>
+    {%- endif %}
+  </div>
+</section>

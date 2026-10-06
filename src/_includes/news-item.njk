@@ -1,0 +1,11 @@
+<li class="news-item">
+  <a href="{{ post.url }}">
+    <span class="news-meta">
+      {%- if post.data.status %}<span class="status status-{{ post.data.status }}">{{ post.data.status | statusLabel }}</span>{% endif %}
+      <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+      {%- if post.data.draft %}<span class="status status-draft">Draft</span>{% endif %}
+    </span>
+    <span class="news-title">{{ post.data.title }}</span>
+    {%- if post.data.subtitle %}<span class="news-sub">{{ post.data.subtitle }}</span>{% endif %}
+  </a>
+</li>
