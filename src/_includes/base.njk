@@ -22,7 +22,7 @@
   <link rel="apple-touch-icon" href="/assets/mark-192.png">
   <link rel="alternate" type="application/atom+xml" title="ayeo news" href="/news/feed.xml">
   <link rel="preload" href="/assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | versioned }}">
   <script>document.documentElement.classList.add("js")</script>
 </head>
 <body class="{{ bodyClass }}">
@@ -58,6 +58,6 @@
     </div>
   </footer>
   {%- if scripts %}{% for s in scripts %}
-  <script src="{{ s }}" defer></script>{% endfor %}{% endif %}
+  <script src="{{ s | versioned }}" defer></script>{% endfor %}{% endif %}
 </body>
 </html>

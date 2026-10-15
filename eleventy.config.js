@@ -1,5 +1,7 @@
 import { EleventyRenderPlugin } from "@11ty/eleventy";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
 
 const isServe = process.env.ELEVENTY_RUN_MODE === "serve";
 const showDrafts = isServe || process.env.SHOW_DRAFTS === "1";
@@ -33,6 +35,14 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("statusLabel", (status) => statusLabels[status]?.label ?? "");
   eleventyConfig.addFilter("statusNote", (status) => statusLabels[status]?.note ?? "");
   eleventyConfig.addFilter("head", (arr, n) => arr.slice(0, n));
+
+  // Browsers cache /assets/* for a day (src/_headers). Adding a hash of the
+  // file to its URL means a changed stylesheet or script gets a new URL, so
+  // nobody runs a cached old script against new HTML.
+  eleventyConfig.addFilter("versioned", (url) => {
+    const hash = createHash("sha256").update(readFileSync(`src${url}`)).digest("hex").slice(0, 10);
+    return `${url}?v=${hash}`;
+  });
 
   eleventyConfig.addPlugin(feedPlugin, {
     type: "atom",
