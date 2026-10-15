@@ -375,50 +375,17 @@
       "night-panel": {
         "role": "neutral",
         "displayName": "Night Panel",
-        "canonical": "#101e34",
-        "oklch": "oklch(23.5% 0.047 259.1)",
-        "tonalRamp": [
-          "#020a1e",
-          "#17253c",
-          "#33435b",
-          "#51627c",
-          "#72839f",
-          "#94a6c3",
-          "#b7cae8",
-          "#e6effe"
-        ]
+        "canonical": "#13243f"
       },
       "night-panel-raised": {
         "role": "neutral",
         "displayName": "Night Panel Raised",
-        "canonical": "#172a46",
-        "oklch": "oklch(28.4% 0.058 258.0)",
-        "tonalRamp": [
-          "#000923",
-          "#122541",
-          "#2e4360",
-          "#4d6282",
-          "#6d84a5",
-          "#8fa7ca",
-          "#b2cbef",
-          "#e5effe"
-        ]
+        "canonical": "#1a3152"
       },
       "night-panel-rule": {
         "role": "neutral",
         "displayName": "Night Panel Rule",
-        "canonical": "#26406a",
-        "oklch": "oklch(37.3% 0.079 259.6)",
-        "tonalRamp": [
-          "#000924",
-          "#0b234b",
-          "#28426c",
-          "#46628e",
-          "#6683b2",
-          "#88a6d7",
-          "#abcbfd",
-          "#e6effe"
-        ]
+        "canonical": "#2e4d7a"
       },
       "night-status-planned": {
         "role": "status",
@@ -483,6 +450,11 @@
           "#becbd7",
           "#e3f0fd"
         ]
+      },
+      "panel-heading": {
+        "role": "neutral",
+        "displayName": "Panel Heading",
+        "canonical": "#ffffff"
       }
     },
     "typographyMeta": {
@@ -561,8 +533,8 @@
       }
     ],
     "focus": {
-      "value": "outline: 3px solid var(--sky); outline-offset: 3px; border-radius: 4px",
-      "purpose": "Every focusable element."
+      "value": "outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px",
+      "purpose": "Every focusable element. --focus is ink on paper and sky on navy surfaces and in dark mode."
     }
   },
   "components": [
@@ -572,7 +544,7 @@
       "refersTo": "button-primary",
       "description": "The main call to action, such as Install Compass.",
       "html": "<a class=\"ds-btn-primary\" href=\"#\">Install Compass</a>",
-      "css": ".ds-btn-primary { display: inline-block; font-family: var(--sans, 'Schibsted Grotesk', system-ui, sans-serif); padding: 0.8rem 1.25rem; border-radius: 999px; background: var(--button, #0a1424); color: var(--button-text, #f2f5f7); border: 2px solid var(--button, #0a1424); font-weight: 650; line-height: 1.2; text-decoration: none; } .ds-btn-primary:hover { background: color-mix(in srgb, var(--button, #0a1424) 85%, var(--sky, #1bb7f2)); } .ds-btn-primary:focus-visible { outline: 3px solid var(--sky, #1bb7f2); outline-offset: 3px; }"
+      "css": ".ds-btn-primary { display: inline-block; font-family: var(--sans, 'Schibsted Grotesk', system-ui, sans-serif); padding: 0.8rem 1.25rem; border-radius: 999px; background: var(--button, #0a1424); color: var(--button-text, #f2f5f7); border: 2px solid var(--button, #0a1424); font-weight: 650; line-height: 1.2; text-decoration: none; } .ds-btn-primary:hover { background: color-mix(in srgb, var(--button, #0a1424) 85%, var(--sky, #1bb7f2)); } .ds-btn-primary:focus-visible { outline: 3px solid var(--focus, #0a1424); outline-offset: 3px; }"
     },
     {
       "name": "Quiet Button",
@@ -580,7 +552,7 @@
       "refersTo": "button-quiet",
       "description": "The secondary action beside a primary button.",
       "html": "<a class=\"ds-btn-quiet\" href=\"#\">Read the code on GitHub</a>",
-      "css": ".ds-btn-quiet { display: inline-block; font-family: var(--sans, 'Schibsted Grotesk', system-ui, sans-serif); padding: 0.8rem 1.25rem; border-radius: 999px; background: transparent; color: var(--ink, #0a1424); border: 2px solid var(--rule, #c9d5dd); font-weight: 650; line-height: 1.2; text-decoration: none; } .ds-btn-quiet:hover { border-color: var(--ink, #0a1424); } .ds-btn-quiet:focus-visible { outline: 3px solid var(--sky, #1bb7f2); outline-offset: 3px; }"
+      "css": ".ds-btn-quiet { display: inline-block; font-family: var(--sans, 'Schibsted Grotesk', system-ui, sans-serif); padding: 0.8rem 1.25rem; border-radius: 999px; background: transparent; color: var(--ink, #0a1424); border: 2px solid var(--rule, #c9d5dd); font-weight: 650; line-height: 1.2; text-decoration: none; } .ds-btn-quiet:hover { border-color: var(--ink, #0a1424); } .ds-btn-quiet:focus-visible { outline: 3px solid var(--focus, #0a1424); outline-offset: 3px; }"
     },
     {
       "name": "Change Picker Chips",
@@ -627,7 +599,7 @@
       "kind": "nav",
       "description": "Sticky translucent masthead with the brand and three links.",
       "html": "<header class=\"ds-mast\"><a class=\"ds-brand\" href=\"#\">ayeo</a><nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Compass</a><a href=\"#\">News</a><a href=\"#\">GitHub</a></nav></header>",
-      "css": ".ds-mast { display: flex; align-items: center; justify-content: space-between; height: 4rem; padding: 0 1.5rem; font-family: var(--sans, 'Schibsted Grotesk', system-ui, sans-serif); background: color-mix(in srgb, var(--paper, #f2f5f7) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule, #c9d5dd); } .ds-brand { color: var(--ink, #0a1424); text-decoration: none; font-weight: 800; font-size: 1.35rem; letter-spacing: -0.03em; } .ds-nav { display: flex; gap: 1.5rem; } .ds-nav a { color: var(--ink-2, #3c4b5c); text-decoration: none; font-weight: 520; } .ds-nav a:hover, .ds-nav a[aria-current=\"page\"] { color: var(--ink, #0a1424); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.4em; } .ds-nav a:focus-visible { outline: 3px solid var(--sky, #1bb7f2); outline-offset: 3px; border-radius: 4px; }"
+      "css": ".ds-mast { display: flex; align-items: center; justify-content: space-between; height: 4rem; padding: 0 1.5rem; font-family: var(--sans, 'Schibsted Grotesk', system-ui, sans-serif); background: color-mix(in srgb, var(--paper, #f2f5f7) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule, #c9d5dd); } .ds-brand { color: var(--ink, #0a1424); text-decoration: none; font-weight: 800; font-size: 1.35rem; letter-spacing: -0.03em; } .ds-nav { display: flex; gap: 1.5rem; } .ds-nav a { color: var(--ink-2, #3c4b5c); text-decoration: none; font-weight: 520; } .ds-nav a:hover, .ds-nav a[aria-current=\"page\"] { color: var(--ink, #0a1424); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.4em; } .ds-nav a:focus-visible { outline: 3px solid var(--focus, #0a1424); outline-offset: 3px; border-radius: 4px; }"
     }
   ],
   "narrative": {
@@ -677,8 +649,8 @@
       "**Do** keep the instrument navy in both themes, and keep it the only object with a shadow.",
       "**Do** use IBM Plex Mono for commands, paths, prompts and stage names.",
       "**Do** pair every status colour with its word, and strike through Shelved.",
-      "**Do** show hover and focus with border, tone and underline changes, and always keep the 3px Sky Signal focus ring.",
-      "**Do** check new colour pairs against WCAG 2.2 AA. The current text pairs all meet at least 4.5:1, for example Slate Ink on Chart Paper at 8.2:1.",
+      "**Do** show hover and focus with border, tone and underline changes, and always keep the 3px focus ring: navy on paper, Sky Signal on navy.",
+      "**Do** check new colour pairs against WCAG 2.2 AA: 4.5:1 for text and 3:1 for focus rings and other non-text marks. Slate Ink on Chart Paper is 8.2:1. Sky Signal on Chart Paper is only 2.1:1, so it is never a focus ring on paper.",
       "**Do** keep every transition inside the `prefers-reduced-motion` reset."
     ],
     "donts": [

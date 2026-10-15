@@ -1,7 +1,22 @@
 // Small enhancements: the assessor tabs and copy buttons. The page works without this file.
 
+// The tab roles are added here, not in the template, so that without
+// JavaScript the page shows every example instead of buttons that do nothing.
 for (const root of document.querySelectorAll("[data-assessor]")) {
-  const tabs = [...root.querySelectorAll('[role="tab"]')];
+  const list = root.querySelector(".choices");
+  const tabs = [...list.querySelectorAll("button")];
+
+  list.setAttribute("role", "tablist");
+  list.setAttribute("aria-labelledby", "assessor-q");
+  tabs.forEach((tab, i) => {
+    const panel = document.getElementById(tab.getAttribute("aria-controls"));
+    tab.setAttribute("role", "tab");
+    panel.setAttribute("role", "tabpanel");
+    panel.setAttribute("aria-labelledby", tab.id);
+    panel.tabIndex = 0;
+    tab.setAttribute("aria-selected", String(i === 0));
+    tab.tabIndex = i === 0 ? 0 : -1;
+  });
 
   const select = (tab, focus) => {
     for (const t of tabs) {
@@ -16,7 +31,10 @@ for (const root of document.querySelectorAll("[data-assessor]")) {
         panel.setAttribute("data-hidden", "");
       }
     }
-    if (focus) tab.focus();
+    if (focus) {
+      tab.focus();
+      tab.scrollIntoView({ block: "nearest", inline: "nearest" });
+    }
   };
 
   tabs.forEach((tab, i) => {
@@ -47,14 +65,28 @@ function replayMeters(panel) {
   );
 }
 
+// When the clipboard is unavailable, select the command so the visitor can
+// copy it themselves, and say so in the live region for screen readers.
+const copyStatus = document.querySelector("[data-copy-status]");
+
 for (const button of document.querySelectorAll("[data-copy]")) {
   button.addEventListener("click", async () => {
+    let message;
     try {
       await navigator.clipboard.writeText(button.dataset.copy);
       button.textContent = "Copied";
+      message = "Command copied.";
     } catch {
-      button.textContent = "Select and copy";
+      const code = button.parentElement.querySelector("code");
+      const range = document.createRange();
+      range.selectNodeContents(code);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      button.textContent = "Selected";
+      message = "Could not copy. The command is selected, so you can copy it yourself.";
     }
+    if (copyStatus) copyStatus.textContent = message;
     setTimeout(() => (button.textContent = "Copy"), 1800);
   });
 }

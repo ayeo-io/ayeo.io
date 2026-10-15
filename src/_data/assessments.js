@@ -26,7 +26,7 @@ export default [
     goal: "New capability",
     approach: "Feature",
     summary: "A behavioural spec, a design proportionate to the risk, and review.",
-    writes: ["Behavioural specification in Gherkin", "Technical design, kept short"],
+    writes: ["Behaviour spec as Given/When/Then scenarios", "Technical design, kept short"],
     checks: [
       "Acceptance defined before implementation",
       "Each scenario fails first, then passes",

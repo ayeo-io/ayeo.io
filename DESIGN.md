@@ -15,6 +15,7 @@ colors:
   panel-text: "#dde7ef"
   panel-muted: "#94a7ba"
   needle-ink: "#06101d"
+  panel-heading: "#ffffff"
   status-planned: "#6a4fd8"
   status-building: "#006f7d"
   status-shipped: "#1f7a3d"
@@ -25,9 +26,9 @@ colors:
   night-ink-2: "#a5b5c4"
   night-rule: "#22354f"
   night-link: "#4fe3d7"
-  night-panel: "#101e34"
-  night-panel-raised: "#172a46"
-  night-panel-rule: "#26406a"
+  night-panel: "#13243f"
+  night-panel-raised: "#1a3152"
+  night-panel-rule: "#2e4d7a"
   night-status-planned: "#a895ff"
   night-status-building: "#4fe3d7"
   night-status-shipped: "#6fd391"
@@ -169,7 +170,7 @@ A cool, nearly monochrome navy-on-paper palette, with one bright cyan used as th
 - **Needle Cyan** (`needle-cyan`): the reading on the instrument. It fills meter ticks, marks the selected change, names the approach and highlights commands. It appears only on navy surfaces in light mode. In dark mode it also becomes the primary button fill, and links on paper use the close `night-link` cyan.
 
 ### Secondary
-- **Sky Signal** (`sky-signal`): focus rings and the small dash bullets in the instrument's plan list. It also tints the primary button on hover.
+- **Sky Signal** (`sky-signal`): focus rings on navy surfaces and everywhere in dark mode, and the small dash bullets in the instrument's plan list. It also tints the primary button on hover.
 - **Harbour Teal** (`harbour-teal`): inline links on paper in light mode, and the "building" status.
 
 ### Neutral
@@ -178,13 +179,14 @@ A cool, nearly monochrome navy-on-paper palette, with one bright cyan used as th
 - **Slate Ink** (`slate-ink`): secondary text, such as ledes, captions, metadata and nav links at rest.
 - **Survey Rule** (`survey-rule`): hairline dividers, card borders and the quiet button outline.
 - **Panel Navy Raised**, **Panel Rule**, **Panel Text** and **Panel Muted** (`panel-navy-raised`, `panel-rule`, `panel-text`, `panel-muted`): the instrument's internal layers. They are raised cards, borders, primary text and labels on navy.
-- **Needle Ink** (`needle-ink`): text on a Needle Cyan fill.
+- **Needle Ink** (`needle-ink`): text on a Needle Cyan fill, and on the white button in a navy band.
+- **Panel Heading** (`panel-heading`): headings in navy bands, and the fill of the primary button there.
 
 ### Status
 - **Planned** (`status-planned`), **Building** (`status-building`), **Shipped** (`status-shipped`) and **Shelved** (`status-shelved`): one colour per news status, for badges and the post status box. Each has a lighter `night-` counterpart for dark mode.
 
 ### Dark theme
-The `night-*` tokens replace the light tokens of the same role under `prefers-color-scheme: dark`. The instrument panel uses `night-panel` and `night-panel-raised`, which stay navy.
+The `night-*` tokens replace the light tokens of the same role under `prefers-color-scheme: dark`. The instrument panel uses `night-panel` and `night-panel-raised`, which stay navy but are lighter than the night page, so the instrument still stands out.
 
 ### Named Rules
 **The One Needle Rule.** Needle Cyan marks a reading or a selection. Do not use it for decoration, large fills or body text on paper.
@@ -262,7 +264,8 @@ Tactile and confident: solid pills with a clear outline in both variants.
 - **Primary:** Deep Chart Navy fill and Chart Paper text, weight 650. In dark mode it becomes a Needle Cyan fill with Needle Ink text.
 - **Hover:** the fill mixes 15% Sky Signal into the navy. There is no lift and no shadow.
 - **Quiet:** transparent with a Survey Rule outline and navy text. On hover the outline darkens to navy.
-- **Focus:** a 3px Sky Signal outline, offset by 3px.
+- **Focus:** a 3px outline, offset by 3px. It is Deep Chart Navy on paper and Sky Signal on navy surfaces and in dark mode, so it always has at least 3:1 contrast.
+- **In a navy band:** the primary button is white with Needle Ink text, and the quiet button has a Panel Rule outline and white text.
 
 ### Chips (change picker)
 - **Style:** pills on Panel Navy Raised with a Panel Rule border and Panel Text, in `small` type.
@@ -300,7 +303,9 @@ The navy panel in the hero, showing how Compass would handle a chosen change. Fr
 - a plan grid of what Compass writes, checks and asks, how many agents run and what it leaves out, with Sky Signal dash bullets;
 - a muted note saying the example is illustrative.
 
-Each meter is three small rounded ticks. Ticks fill with Needle Cyan up to the level, with a 0.25s colour transition staggered by 0.06s per tick. Without JavaScript, every readout shows in sequence. With JavaScript, only the selected one shows.
+Without JavaScript, the question and the picker are hidden, and every example shows under its own heading. With JavaScript, the examples share one grid cell, so the instrument keeps the height of the tallest one and the page below does not move.
+
+Each meter is three small rounded ticks. Ticks fill with Needle Cyan up to the level, with a 0.25s colour transition staggered by 0.06s per tick.
 
 ## Do's and Don'ts
 
@@ -309,8 +314,8 @@ Each meter is three small rounded ticks. Ticks fill with Needle Cyan up to the l
 - **Do** keep the instrument navy in both themes, and keep it the only object with a shadow.
 - **Do** use IBM Plex Mono for commands, paths, prompts and stage names.
 - **Do** pair every status colour with its word, and strike through Shelved.
-- **Do** show hover and focus with border, tone and underline changes, and always keep the 3px Sky Signal focus ring.
-- **Do** check new colour pairs against WCAG 2.2 AA. The current text pairs all meet at least 4.5:1, for example Slate Ink on Chart Paper at 8.2:1.
+- **Do** show hover and focus with border, tone and underline changes, and always keep the 3px focus ring: navy on paper, Sky Signal on navy.
+- **Do** check new colour pairs against WCAG 2.2 AA: 4.5:1 for text and 3:1 for focus rings and other non-text marks. Slate Ink on Chart Paper is 8.2:1. Sky Signal on Chart Paper is only 2.1:1, so it is never a focus ring on paper.
 - **Do** keep every transition inside the `prefers-reduced-motion` reset.
 
 ### Don't:
