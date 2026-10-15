@@ -1,0 +1,692 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-15T14:46:28+00:00",
+  "title": "Design System: ayeo.io",
+  "extensions": {
+    "colorMeta": {
+      "deep-chart-navy": {
+        "role": "primary",
+        "displayName": "Deep Chart Navy",
+        "canonical": "#0a1424",
+        "oklch": "oklch(19.1% 0.036 259.5)",
+        "tonalRamp": [
+          "#030b1a",
+          "#1a2537",
+          "#374355",
+          "#556276",
+          "#768398",
+          "#98a6bc",
+          "#bccae1",
+          "#e5efff"
+        ]
+      },
+      "needle-cyan": {
+        "role": "primary",
+        "displayName": "Needle Cyan",
+        "canonical": "#2cecdd",
+        "oklch": "oklch(85.2% 0.143 186.4)",
+        "tonalRamp": [
+          "#000f0d",
+          "#022c28",
+          "#0b4c47",
+          "#177068",
+          "#16968c",
+          "#21bdb1",
+          "#1fe7d8",
+          "#bbfef5"
+        ]
+      },
+      "sky-signal": {
+        "role": "secondary",
+        "displayName": "Sky Signal",
+        "canonical": "#1bb7f2",
+        "oklch": "oklch(73.2% 0.144 231.4)",
+        "tonalRamp": [
+          "#000d15",
+          "#01293a",
+          "#064862",
+          "#116a8d",
+          "#078ebe",
+          "#11b3ee",
+          "#87d5fc",
+          "#ddf2fe"
+        ]
+      },
+      "chart-paper": {
+        "role": "neutral",
+        "displayName": "Chart Paper",
+        "canonical": "#f2f5f7",
+        "oklch": "oklch(96.8% 0.004 236.5)",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#232527",
+          "#404244",
+          "#5f6263",
+          "#808384",
+          "#a3a5a7",
+          "#c7c9cb",
+          "#eceff1"
+        ]
+      },
+      "chart-paper-tint": {
+        "role": "neutral",
+        "displayName": "Chart Paper Tint",
+        "canonical": "#e5ecf0",
+        "oklch": "oklch(93.9% 0.009 232.4)",
+        "tonalRamp": [
+          "#070c0e",
+          "#212629",
+          "#3d4346",
+          "#5c6266",
+          "#7d8387",
+          "#a0a6aa",
+          "#c3cace",
+          "#e9f0f4"
+        ]
+      },
+      "slate-ink": {
+        "role": "neutral",
+        "displayName": "Slate Ink",
+        "canonical": "#3c4b5c",
+        "oklch": "oklch(40.7% 0.035 251.8)",
+        "tonalRamp": [
+          "#020c19",
+          "#182635",
+          "#354354",
+          "#536375",
+          "#748497",
+          "#96a7bb",
+          "#b9cbe0",
+          "#e4f0fe"
+        ]
+      },
+      "survey-rule": {
+        "role": "neutral",
+        "displayName": "Survey Rule",
+        "canonical": "#c9d5dd",
+        "oklch": "oklch(86.6% 0.017 236.7)",
+        "tonalRamp": [
+          "#050c11",
+          "#1d262c",
+          "#3a444a",
+          "#58636a",
+          "#79848b",
+          "#9ba7af",
+          "#bfcbd3",
+          "#e4f1f9"
+        ]
+      },
+      "harbour-teal": {
+        "role": "secondary",
+        "displayName": "Harbour Teal",
+        "canonical": "#006f7d",
+        "oklch": "oklch(49.6% 0.086 209.9)",
+        "tonalRamp": [
+          "#000e11",
+          "#022b31",
+          "#0a4b54",
+          "#166d7a",
+          "#37909f",
+          "#5eb4c3",
+          "#83d9e8",
+          "#cef7ff"
+        ]
+      },
+      "panel-navy-raised": {
+        "role": "neutral",
+        "displayName": "Panel Navy Raised",
+        "canonical": "#14243d",
+        "oklch": "oklch(26.0% 0.052 259.0)",
+        "tonalRamp": [
+          "#010a21",
+          "#15253e",
+          "#31435e",
+          "#4f627f",
+          "#7083a2",
+          "#92a6c6",
+          "#b5cbec",
+          "#e6effe"
+        ]
+      },
+      "panel-rule": {
+        "role": "neutral",
+        "displayName": "Panel Rule",
+        "canonical": "#23395a",
+        "oklch": "oklch(34.3% 0.065 258.3)",
+        "tonalRamp": [
+          "#000a22",
+          "#102544",
+          "#2c4264",
+          "#4a6286",
+          "#6a84a9",
+          "#8ca7ce",
+          "#b0cbf4",
+          "#e5efff"
+        ]
+      },
+      "panel-text": {
+        "role": "neutral",
+        "displayName": "Panel Text",
+        "canonical": "#dde7ef",
+        "oklch": "oklch(92.3% 0.015 241.8)",
+        "tonalRamp": [
+          "#060c11",
+          "#1f262c",
+          "#3b434a",
+          "#5a6269",
+          "#7b848b",
+          "#9da6ae",
+          "#c1cbd2",
+          "#e6f0f8"
+        ]
+      },
+      "panel-muted": {
+        "role": "neutral",
+        "displayName": "Panel Muted",
+        "canonical": "#94a7ba",
+        "oklch": "oklch(72.0% 0.035 248.3)",
+        "tonalRamp": [
+          "#010c19",
+          "#172635",
+          "#334454",
+          "#526375",
+          "#728597",
+          "#94a7ba",
+          "#b8ccdf",
+          "#e3f0fe"
+        ]
+      },
+      "needle-ink": {
+        "role": "neutral",
+        "displayName": "Needle Ink",
+        "canonical": "#06101d",
+        "oklch": "oklch(17.1% 0.032 254.4)",
+        "tonalRamp": [
+          "#030b18",
+          "#1a2634",
+          "#374353",
+          "#556273",
+          "#768495",
+          "#98a7b9",
+          "#bccbde",
+          "#e5f0fe"
+        ]
+      },
+      "status-planned": {
+        "role": "status",
+        "displayName": "Planned",
+        "canonical": "#6a4fd8",
+        "oklch": "oklch(53.4% 0.200 286.6)",
+        "tonalRamp": [
+          "#0c002d",
+          "#260765",
+          "#4316a3",
+          "#5f41ca",
+          "#7e67f1",
+          "#9f96fa",
+          "#c5c2fb",
+          "#edecff"
+        ]
+      },
+      "status-building": {
+        "role": "status",
+        "displayName": "Building",
+        "canonical": "#006f7d",
+        "oklch": "oklch(49.6% 0.086 209.9)",
+        "tonalRamp": [
+          "#000e11",
+          "#022b31",
+          "#0a4b54",
+          "#166d7a",
+          "#37909f",
+          "#5eb4c3",
+          "#83d9e8",
+          "#cef7ff"
+        ]
+      },
+      "status-shipped": {
+        "role": "status",
+        "displayName": "Shipped",
+        "canonical": "#1f7a3d",
+        "oklch": "oklch(51.2% 0.126 149.9)",
+        "tonalRamp": [
+          "#001003",
+          "#022e11",
+          "#0a5023",
+          "#167438",
+          "#419758",
+          "#66bb7a",
+          "#8ae09d",
+          "#c7ffd1"
+        ]
+      },
+      "status-shelved": {
+        "role": "status",
+        "displayName": "Shelved",
+        "canonical": "#66717d",
+        "oklch": "oklch(54.4% 0.023 250.6)",
+        "tonalRamp": [
+          "#050c15",
+          "#1d2630",
+          "#39434e",
+          "#58626e",
+          "#788490",
+          "#9ba6b3",
+          "#becbd8",
+          "#e3f0fe"
+        ]
+      },
+      "night-paper": {
+        "role": "neutral",
+        "displayName": "Night Paper",
+        "canonical": "#0a1424",
+        "oklch": "oklch(19.1% 0.036 259.5)",
+        "tonalRamp": [
+          "#030b1a",
+          "#1a2537",
+          "#374355",
+          "#556276",
+          "#768398",
+          "#98a6bc",
+          "#bccae1",
+          "#e5efff"
+        ]
+      },
+      "night-paper-tint": {
+        "role": "neutral",
+        "displayName": "Night Paper Tint",
+        "canonical": "#0e1b2f",
+        "oklch": "oklch(22.2% 0.043 258.7)",
+        "tonalRamp": [
+          "#020b1d",
+          "#18253a",
+          "#344359",
+          "#52627a",
+          "#73839d",
+          "#95a6c1",
+          "#b8cae6",
+          "#e6effe"
+        ]
+      },
+      "night-ink": {
+        "role": "neutral",
+        "displayName": "Night Ink",
+        "canonical": "#e6eef3",
+        "oklch": "oklch(94.5% 0.011 234.8)",
+        "tonalRamp": [
+          "#070c0f",
+          "#20262a",
+          "#3d4347",
+          "#5c6267",
+          "#7c8488",
+          "#9fa6ab",
+          "#c3cacf",
+          "#e8f0f5"
+        ]
+      },
+      "night-ink-2": {
+        "role": "neutral",
+        "displayName": "Night Ink 2",
+        "canonical": "#a5b5c4",
+        "oklch": "oklch(76.6% 0.028 246.4)",
+        "tonalRamp": [
+          "#030c16",
+          "#1a2632",
+          "#364450",
+          "#556371",
+          "#758493",
+          "#97a7b6",
+          "#bbcbdb",
+          "#e2f0fe"
+        ]
+      },
+      "night-rule": {
+        "role": "neutral",
+        "displayName": "Night Rule",
+        "canonical": "#22354f",
+        "oklch": "oklch(32.6% 0.053 256.5)",
+        "tonalRamp": [
+          "#000a21",
+          "#13253e",
+          "#2f435e",
+          "#4e637f",
+          "#6e84a2",
+          "#90a7c6",
+          "#b3cbec",
+          "#e5effe"
+        ]
+      },
+      "night-link": {
+        "role": "neutral",
+        "displayName": "Night Link",
+        "canonical": "#4fe3d7",
+        "oklch": "oklch(83.5% 0.125 187.4)",
+        "tonalRamp": [
+          "#000f0d",
+          "#002c29",
+          "#054d48",
+          "#0f7069",
+          "#00968d",
+          "#07beb3",
+          "#4fe3d7",
+          "#b9fef7"
+        ]
+      },
+      "night-panel": {
+        "role": "neutral",
+        "displayName": "Night Panel",
+        "canonical": "#101e34",
+        "oklch": "oklch(23.5% 0.047 259.1)",
+        "tonalRamp": [
+          "#020a1e",
+          "#17253c",
+          "#33435b",
+          "#51627c",
+          "#72839f",
+          "#94a6c3",
+          "#b7cae8",
+          "#e6effe"
+        ]
+      },
+      "night-panel-raised": {
+        "role": "neutral",
+        "displayName": "Night Panel Raised",
+        "canonical": "#172a46",
+        "oklch": "oklch(28.4% 0.058 258.0)",
+        "tonalRamp": [
+          "#000923",
+          "#122541",
+          "#2e4360",
+          "#4d6282",
+          "#6d84a5",
+          "#8fa7ca",
+          "#b2cbef",
+          "#e5effe"
+        ]
+      },
+      "night-panel-rule": {
+        "role": "neutral",
+        "displayName": "Night Panel Rule",
+        "canonical": "#26406a",
+        "oklch": "oklch(37.3% 0.079 259.6)",
+        "tonalRamp": [
+          "#000924",
+          "#0b234b",
+          "#28426c",
+          "#46628e",
+          "#6683b2",
+          "#88a6d7",
+          "#abcbfd",
+          "#e6effe"
+        ]
+      },
+      "night-status-planned": {
+        "role": "status",
+        "displayName": "Night Status Planned",
+        "canonical": "#a895ff",
+        "oklch": "oklch(73.0% 0.151 290.4)",
+        "tonalRamp": [
+          "#0e002b",
+          "#2a0761",
+          "#452a8a",
+          "#634caf",
+          "#836fd5",
+          "#a592fc",
+          "#c8c0fd",
+          "#eeecfe"
+        ]
+      },
+      "night-status-building": {
+        "role": "status",
+        "displayName": "Night Status Building",
+        "canonical": "#4fe3d7",
+        "oklch": "oklch(83.5% 0.125 187.4)",
+        "tonalRamp": [
+          "#000f0d",
+          "#002c29",
+          "#054d48",
+          "#0f7069",
+          "#00968d",
+          "#07beb3",
+          "#4fe3d7",
+          "#b9fef7"
+        ]
+      },
+      "night-status-shipped": {
+        "role": "status",
+        "displayName": "Night Status Shipped",
+        "canonical": "#6fd391",
+        "oklch": "oklch(78.9% 0.134 153.3)",
+        "tonalRamp": [
+          "#001004",
+          "#042e16",
+          "#025028",
+          "#09753e",
+          "#30995b",
+          "#59bd7c",
+          "#7ee2a0",
+          "#c9fed7"
+        ]
+      },
+      "night-status-shelved": {
+        "role": "status",
+        "displayName": "Night Status Shelved",
+        "canonical": "#8d99a5",
+        "oklch": "oklch(67.7% 0.022 248.2)",
+        "tonalRamp": [
+          "#040c14",
+          "#1c2630",
+          "#39434e",
+          "#57636e",
+          "#788490",
+          "#9aa7b3",
+          "#becbd7",
+          "#e3f0fd"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The page's single H1."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section H2s and post titles."
+      },
+      "readout": {
+        "displayName": "Readout",
+        "purpose": "The approach name inside the instrument, in Needle Cyan."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "H3s, news item titles and layer names."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Intro paragraph under a headline, in Slate Ink."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, up to 38em wide."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Captions, metadata, chips and plan text."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Instrument terms, status badges and notes."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Commands, prompts, the record tree and stage names."
+      }
+    },
+    "shadows": [
+      {
+        "name": "instrument-lift",
+        "value": "0 30px 60px -30px rgba(10, 20, 36, 0.55)",
+        "purpose": "The hero instrument only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "meter-fill",
+        "value": "background-color 0.25s ease, staggered 0.06s per tick",
+        "purpose": "Meter ticks filling to the assessed level."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transition: none; animation: none",
+        "purpose": "Applied to everything under prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "instrument-grid",
+        "value": "36rem"
+      },
+      {
+        "name": "grids",
+        "value": "48rem"
+      },
+      {
+        "name": "two-col",
+        "value": "56rem"
+      },
+      {
+        "name": "hero",
+        "value": "62rem"
+      }
+    ],
+    "focus": {
+      "value": "outline: 3px solid var(--sky); outline-offset: 3px; border-radius: 4px",
+      "purpose": "Every focusable element."
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main call to action, such as Install Compass.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Install Compass</a>",
+      "css": ".ds-btn-primary { display: inline-block; font-family: var(--sans, 'Schibsted Grotesk', system-ui, sans-serif); padding: 0.8rem 1.25rem; border-radius: 999px; background: var(--button, #0a1424); color: var(--button-text, #f2f5f7); border: 2px solid var(--button, #0a1424); font-weight: 650; line-height: 1.2; text-decoration: none; } .ds-btn-primary:hover { background: color-mix(in srgb, var(--button, #0a1424) 85%, var(--sky, #1bb7f2)); } .ds-btn-primary:focus-visible { outline: 3px solid var(--sky, #1bb7f2); outline-offset: 3px; }"
+    },
+    {
+      "name": "Quiet Button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "The secondary action beside a primary button.",
+      "html": "<a class=\"ds-btn-quiet\" href=\"#\">Read the code on GitHub</a>",
+      "css": ".ds-btn-quiet { display: inline-block; font-family: var(--sans, 'Schibsted Grotesk', system-ui, sans-serif); padding: 0.8rem 1.25rem; border-radius: 999px; background: transparent; color: var(--ink, #0a1424); border: 2px solid var(--rule, #c9d5dd); font-weight: 650; line-height: 1.2; text-decoration: none; } .ds-btn-quiet:hover { border-color: var(--ink, #0a1424); } .ds-btn-quiet:focus-visible { outline: 3px solid var(--sky, #1bb7f2); outline-offset: 3px; }"
+    },
+    {
+      "name": "Change Picker Chips",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Tabs inside the instrument for choosing an example change.",
+      "html": "<div class=\"ds-chips\" role=\"tablist\"><button class=\"ds-chip\" role=\"tab\" aria-selected=\"true\">Fix a typo in the README</button><button class=\"ds-chip\" role=\"tab\" aria-selected=\"false\">Add rate limiting to the public API</button></div>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 1rem; background: var(--panel, #0a1424); border-radius: 18px; } .ds-chip { font-family: var(--sans, 'Schibsted Grotesk', system-ui, sans-serif); font-size: 0.875rem; font-weight: 520; color: var(--panel-text, #dde7ef); background: var(--panel-2, #14243d); border: 1px solid var(--panel-rule, #23395a); border-radius: 999px; padding: 0.45rem 0.85rem; cursor: pointer; } .ds-chip:hover { border-color: var(--needle, #2cecdd); } .ds-chip[aria-selected=\"true\"] { background: var(--needle, #2cecdd); color: #06101d; border-color: var(--needle, #2cecdd); font-weight: 650; } .ds-chip:focus-visible { outline: 3px solid var(--sky, #1bb7f2); outline-offset: 3px; }"
+    },
+    {
+      "name": "Assessment Meter",
+      "kind": "custom",
+      "refersTo": "instrument",
+      "description": "Three ticks that fill with Needle Cyan up to the assessed level.",
+      "html": "<div class=\"ds-meterbox\"><div class=\"ds-meter\" data-level=\"2\"><span class=\"ds-dt\">Risk</span><span class=\"ds-dd\"><span class=\"ds-ticks\"><i></i><i></i><i></i></span> Medium</span></div></div>",
+      "css": ".ds-meterbox { background: var(--panel, #0a1424); padding: 1rem 1.25rem; border-radius: 18px; color: var(--panel-text, #dde7ef); font-family: var(--sans, 'Schibsted Grotesk', system-ui, sans-serif); } .ds-dt { display: block; font-size: 0.78rem; color: var(--panel-muted, #94a7ba); margin-bottom: 0.2rem; } .ds-dd { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 600; } .ds-ticks { display: inline-flex; gap: 3px; } .ds-ticks i { width: 7px; height: 14px; border-radius: 2px; background: var(--panel-rule, #23395a); transition: background-color 0.25s ease; } .ds-meter[data-level=\"2\"] .ds-ticks i:nth-child(-n+2) { background: var(--needle, #2cecdd); }"
+    },
+    {
+      "name": "Approach Card",
+      "kind": "card",
+      "refersTo": "approach-card",
+      "description": "The approach Compass chose, inside the instrument.",
+      "html": "<div class=\"ds-panel\"><div class=\"ds-approach\"><p class=\"ds-approach-name\">Feature</p><p>A behavioural spec, a design proportionate to the risk, and review.</p></div></div>",
+      "css": ".ds-panel { background: var(--panel, #0a1424); padding: 1.25rem; border-radius: 18px; box-shadow: 0 30px 60px -30px rgba(10, 20, 36, 0.55); font-family: var(--sans, 'Schibsted Grotesk', system-ui, sans-serif); } .ds-approach { background: var(--panel-2, #14243d); border-radius: 10px; padding: 0.9rem 1.1rem; color: var(--panel-text, #dde7ef); } .ds-approach p { margin: 0; } .ds-approach-name { font-size: 1.75rem; font-weight: 820; letter-spacing: -0.025em; line-height: 1.15; color: var(--needle, #2cecdd); margin-bottom: 0.15rem !important; }"
+    },
+    {
+      "name": "Install Code Row",
+      "kind": "custom",
+      "refersTo": "code-row",
+      "description": "A command to copy, with its copy button.",
+      "html": "<div class=\"ds-band\"><div class=\"ds-code\"><code>/plugin install compass@compass</code><button class=\"ds-copy\" type=\"button\">Copy</button></div></div>",
+      "css": ".ds-band { background: var(--panel, #0a1424); padding: 1.25rem; } .ds-code { display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: var(--panel-2, #14243d); border: 1px solid var(--panel-rule, #23395a); border-radius: 10px; padding: 0.7rem 0.7rem 0.7rem 1rem; } .ds-code code { font-family: var(--mono, 'IBM Plex Mono', ui-monospace, monospace); font-size: 0.88rem; color: var(--panel-text, #dde7ef); } .ds-copy { font-family: var(--sans, 'Schibsted Grotesk', system-ui, sans-serif); font-size: 0.8rem; font-weight: 600; background: transparent; color: var(--needle, #2cecdd); border: 1px solid var(--panel-rule, #23395a); border-radius: 6px; padding: 0.3rem 0.65rem; cursor: pointer; } .ds-copy:hover { border-color: var(--needle, #2cecdd); } .ds-copy:focus-visible { outline: 3px solid var(--sky, #1bb7f2); outline-offset: 3px; }"
+    },
+    {
+      "name": "Status Badges",
+      "kind": "chip",
+      "refersTo": "status-badge",
+      "description": "News post status, always with its word.",
+      "html": "<span class=\"ds-status ds-planned\">Planned</span> <span class=\"ds-status ds-building\">Building</span> <span class=\"ds-status ds-shipped\">Shipped</span> <span class=\"ds-status ds-shelved\">Shelved</span>",
+      "css": ".ds-status { display: inline-block; font-family: var(--sans, 'Schibsted Grotesk', system-ui, sans-serif); font-size: 0.78rem; font-weight: 650; line-height: 1; padding: 0.3rem 0.55rem; border-radius: 999px; border: 1.5px solid currentColor; } .ds-planned { color: var(--status-planned, #6a4fd8); } .ds-building { color: var(--status-building, #006f7d); } .ds-shipped { color: var(--status-shipped, #1f7a3d); background: color-mix(in srgb, var(--status-shipped, #1f7a3d) 12%, transparent); } .ds-shelved { color: var(--status-shelved, #66717d); text-decoration: line-through; }"
+    },
+    {
+      "name": "Masthead Navigation",
+      "kind": "nav",
+      "description": "Sticky translucent masthead with the brand and three links.",
+      "html": "<header class=\"ds-mast\"><a class=\"ds-brand\" href=\"#\">ayeo</a><nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Compass</a><a href=\"#\">News</a><a href=\"#\">GitHub</a></nav></header>",
+      "css": ".ds-mast { display: flex; align-items: center; justify-content: space-between; height: 4rem; padding: 0 1.5rem; font-family: var(--sans, 'Schibsted Grotesk', system-ui, sans-serif); background: color-mix(in srgb, var(--paper, #f2f5f7) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule, #c9d5dd); } .ds-brand { color: var(--ink, #0a1424); text-decoration: none; font-weight: 800; font-size: 1.35rem; letter-spacing: -0.03em; } .ds-nav { display: flex; gap: 1.5rem; } .ds-nav a { color: var(--ink-2, #3c4b5c); text-decoration: none; font-weight: 520; } .ds-nav a:hover, .ds-nav a[aria-current=\"page\"] { color: var(--ink, #0a1424); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.4em; } .ds-nav a:focus-visible { outline: 3px solid var(--sky, #1bb7f2); outline-offset: 3px; border-radius: 4px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Navigator's Chart",
+    "overview": "**Creative North Star: \"The Navigator's Chart\"**\n\nThe site is a calm chart table with one lit instrument on it. Pages are cool paper with deep navy ink, ruled with fine survey lines. The one loud object is the navy instrument panel in the hero, where Compass takes a reading of a change and shows it in Needle Cyan. Everything else stays quiet so the reading carries the page.\n\nDensity is moderate and generous with space. Sections alternate between plain paper, a faint paper tint and full navy bands. Type is a confident grotesque with tight negative tracking for headings, and a monospace for anything a person would type or a tool would print. Components are tactile and confident: solid pills, clear selected states and meters that fill tick by tick.\n\nThe site has light and dark themes and follows the visitor's system setting. In dark mode the paper becomes navy, but the instrument stays a navy panel in both themes. The light paper theme is the reference design.",
+    "keyCharacteristics": [
+      "Cool paper and deep navy ink, with one navy instrument as the focal object.",
+      "Needle Cyan marks a reading or a selection, and almost nothing else.",
+      "Flat and tonal everywhere, with a single lifted object.",
+      "Grotesque headings with tight negative tracking; monospace for commands, paths and stage names.",
+      "Pill-shaped controls and softly rounded panels."
+    ],
+    "rules": [
+      {
+        "name": "The One Needle Rule",
+        "body": "Needle Cyan marks a reading or a selection. Do not use it for decoration, large fills or body text on paper.",
+        "section": "colors"
+      },
+      {
+        "name": "The Navy Instrument Rule",
+        "body": "The instrument is navy in both themes. Do not invert it to a light panel in light mode or a cyan panel in dark mode.",
+        "section": "colors"
+      },
+      {
+        "name": "The Status Is Colour Plus Words Rule",
+        "body": "Every status badge carries its word (\"Planned\", \"Shipped\"), and Shelved is also struck through. Colour never carries the status alone.",
+        "section": "colors"
+      },
+      {
+        "name": "The Typed Text Is Mono Rule",
+        "body": "Anything a visitor would type, copy or see printed by Compass uses IBM Plex Mono. Prose about it does not.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tight Heading Rule",
+        "body": "Headings use negative tracking that grows with size (`-0.01em` for titles up to `-0.03em` for display) and balanced wrapping.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Lifted Object Rule",
+        "body": "Only the instrument casts a shadow. Cards, buttons, code rows and news items stay flat at rest and on hover. They show state with border, tone or underline changes instead.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep Needle Cyan for readings and selections on navy, as the One Needle Rule says.",
+      "**Do** keep the instrument navy in both themes, and keep it the only object with a shadow.",
+      "**Do** use IBM Plex Mono for commands, paths, prompts and stage names.",
+      "**Do** pair every status colour with its word, and strike through Shelved.",
+      "**Do** show hover and focus with border, tone and underline changes, and always keep the 3px Sky Signal focus ring.",
+      "**Do** check new colour pairs against WCAG 2.2 AA. The current text pairs all meet at least 4.5:1, for example Slate Ink on Chart Paper at 8.2:1.",
+      "**Do** keep every transition inside the `prefers-reduced-motion` reset."
+    ],
+    "donts": [
+      "**Don't** add purple-to-blue gradients, glowing orbs, sparkle icons or other generic AI-startup styling.",
+      "**Don't** make the site dark-only or use neon-on-black hacker styling. Light paper is the reference theme, and dark mode is a careful counterpart.",
+      "**Don't** add shadows to cards, buttons or news rows.",
+      "**Don't** use Survey Rule alone to carry meaning. It is a 1.4:1 hairline against Chart Paper, for structure only.",
+      "**Don't** load fonts, scripts or images from other sites. The Content Security Policy blocks them."
+    ]
+  }
+}
