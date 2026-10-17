@@ -11,7 +11,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",
     "@11ty/eleventy-plugin-rss": "^2.0.4",
-    "wrangler": "^4.148.0"
+    "wrangler": "^4.151.1"
   },
   "private": true,
   "type": "module",
