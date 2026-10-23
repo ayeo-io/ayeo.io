@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" role="img" aria-label="ayeo mark">
+  <path d="M16 2 L28 9 L28 23 L16 30 L4 23 L4 9 Z" stroke="#6A95B6" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path d="M10.1 11.8 L10.1 20.2" stroke="#6A95B6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path d="M19 16 m-4.5 0 a4.5 4.5 0 1 0 9 0 a4.5 4.5 0 1 0 -9 0" stroke="#10B981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
