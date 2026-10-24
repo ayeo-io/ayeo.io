@@ -90,3 +90,24 @@ for (const button of document.querySelectorAll("[data-copy]")) {
     setTimeout(() => (button.textContent = "Copy"), 1800);
   });
 }
+
+// Theme switcher in the masthead: auto (follow the system), light, dark; remembered per browser.
+// The inline script in base.njk applies the saved choice early so the page never flashes.
+(() => {
+  const btn = document.getElementById("theme-toggle");
+  const root = document.documentElement;
+  const LABEL = { auto: "Auto", light: "Light", dark: "Dark" };
+  const apply = mode => {
+    if (mode === "auto") root.removeAttribute("data-theme"); else root.setAttribute("data-theme", mode);
+    btn.dataset.mode = mode; btn.querySelector(".theme-label").textContent = LABEL[mode];
+    btn.setAttribute("aria-label", mode === "auto" ? "Theme: follows your system. Click to change" : `Theme: ${mode}. Click to change`);
+  };
+  let mode = "auto";
+  try { const saved = localStorage.getItem("ayeo-compass-theme"); if (saved === "light" || saved === "dark") mode = saved; } catch {}
+  apply(mode);
+  btn.addEventListener("click", () => {
+    mode = mode === "auto" ? "light" : mode === "light" ? "dark" : "auto";
+    apply(mode);
+    try { if (mode === "auto") localStorage.removeItem("ayeo-compass-theme"); else localStorage.setItem("ayeo-compass-theme", mode); } catch {}
+  });
+})();

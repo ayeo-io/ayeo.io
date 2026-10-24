@@ -1,66 +1,179 @@
 ---
 layout: base.njk
 bodyClass: home
-scripts: ["/assets/js/site.js"]
+scripts: ["/assets/js/explainers.js"]
 ---
-{%- set riskWords = ["", "Low", "Medium", "High"] %}
-{%- set famWords = ["", "Unfamiliar", "Partly familiar", "Familiar"] %}
-{%- set sizeWords = ["", "Small", "Medium", "Large"] %}
-{%- macro meter(label, level, words) %}
-<div class="meter" data-level="{{ level }}">
-  <dt>{{ label }}</dt>
-  <dd><span class="ticks" aria-hidden="true"><i></i><i></i><i></i></span> {{ words[level] }}</dd>
-</div>
-{%- endmacro %}
-
 <section class="hero" id="compass">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="product"><img src="/assets/compass-mark.png" width="28" height="28" alt=""> Compass, from ayeo</p>
+      <p class="product">{% include "mark-compass.njk" %} <span>Compass<span class="from">, from ayeo</span></span></p>
       <h1>Enough process for the work at hand. No&nbsp;more.</h1>
-      <p class="lede">Compass is an open-source plugin for <a href="https://claude.com/product/claude-code">Claude Code</a>. It assesses each change by risk, familiarity, size and goal, then sets the process to match: what to write, what to check, and when to ask a human.</p>
+      <p class="lede">Spec-driven development gives every change the same process. Changing a label on a website gets the same spec, plan and review as moving to a new payments provider.</p>
+      <p class="lede">Compass is an open-source plugin for <a href="https://claude.com/product/claude-code">Claude Code</a>. It assesses each change by risk, familiarity, size and goal, then picks an approach to match: what to write, what to check, and when to ask a human.</p>
       <p class="actions">
         <a class="button" href="#install">Install Compass</a>
         <a class="button quiet" href="{{ site.compass.url }}">Read the code on GitHub</a>
       </p>
-      <p class="for-teams">Leading a team? <a href="#teams">See what your team controls</a></p>
+      <p class="small facts"><a href="{{ site.compass.url }}/releases/tag/v{{ site.compass.version }}">Compass {{ site.compass.version }}</a>, released {{ site.compass.released }}. Free and open source under the <a href="{{ site.compass.url }}/blob/main/LICENSE">{{ site.compass.licence }} licence</a>.</p>
     </div>
+    <figure class="instrument" data-fig="assess">
+      <div class="inst-head"><figcaption class="cap">One change, read four ways</figcaption><div class="inst-ctl"><input type="range" id="scrub-assess" min="0" max="1000" value="1000" aria-label="Scrub the animation"><button class="replay" type="button">Replay</button></div></div>
+      <svg viewBox="0 0 720 400" role="img" aria-label="Animated: a change is scored on risk, familiarity, size and goal, and the approach Regular is chosen."></svg>
+      <p class="inst-note">Illustrative assessment, in the words Compass uses. <code>RP-SHAPE-005</code> is the ID of the policy rule that picks the approach.</p>
+    </figure>
+  </div>
+</section>
 
-    {#- The tab roles are added by site.js. Without JavaScript the buttons are
-        hidden and every example shows, each under its own heading. #}
-    <div class="instrument" data-assessor>
-      <p class="instrument-q" id="assessor-q">Pick a change to see how Compass would handle it</p>
-      <div class="choices">
-        {%- for a in assessments %}
-        <button type="button" id="tab-{{ a.id }}" aria-controls="panel-{{ a.id }}">{{ a.change }}</button>
-        {%- endfor %}
-      </div>
-      <div class="readouts">
-        {%- for a in assessments %}
-        <div class="readout" id="panel-{{ a.id }}" {% if not loop.first %}data-hidden{% endif %}>
-          <h2 class="prompt"><span aria-hidden="true">&gt;</span> /compass:assess "{{ a.change }}"</h2>
-          <dl class="assessment">
-            {{ meter("Risk", a.risk, riskWords) }}
-            {{ meter("Familiarity", a.familiarity, famWords) }}
-            {{ meter("Size", a.size, sizeWords) }}
-            <div class="meter goal"><dt>Goal</dt><dd>{{ a.goal }}</dd></div>
-          </dl>
-          <div class="approach">
-            <p class="approach-name">{{ a.approach }}</p>
-            <p>{{ a.summary }}</p>
-          </div>
-          <dl class="plan">
-            <div><dt>Writes</dt><dd><ul>{% for w in a.writes %}<li>{{ w }}</li>{% endfor %}</ul></dd></div>
-            <div><dt>Checks</dt><dd><ul>{% for c in a.checks %}<li>{{ c }}</li>{% endfor %}</ul></dd></div>
-            <div><dt>Asks you</dt><dd>{{ a.asks }}</dd></div>
-            <div><dt>Agents in parallel</dt><dd>{{ a.agents }}</dd></div>
-            <div class="omitted"><dt>Leaves out, and says why</dt><dd>{{ a.leavesOut }}</dd></div>
-          </dl>
-        </div>
-        {%- endfor %}
-      </div>
-      <p class="instrument-note">Illustrative. In your project, the <a href="#teams">routing policy</a> makes the call.</p>
+<nav class="page-nav" aria-label="On this page">
+  <div class="wrap">
+    <ol class="chapters">
+      <li><a href="#assess">Reading the change</a></li>
+      <li><a href="#space">Typo or auth change</a></li>
+      <li><a href="#stages">Same stages, different depth</a></li>
+      <li><a href="#guardrails">Rules and good practice</a></li>
+      <li><a href="#policy">Your team's rules</a></li>
+      <li><a href="#record">The record</a></li>
+    </ol>
+  </div>
+</nav>
+
+<section class="section tinted" id="teams">
+  <div class="wrap two-col">
+    <div>
+      <h2>What engineering leaders can rely on</h2>
+      <p>Compass gives a team one set of rules for how agents work. The rules live in the repository, next to the code they govern.</p>
     </div>
+    <dl class="controls">
+      <div>
+        <dt>A person signs off on the irreversible</dt>
+        <dd>Work that is hard to undo, such as auth, payments, personal data and migrations, waits for a named person to approve it. This guardrail is locked: no setting or unlock removes it.</dd>
+      </div>
+      <div>
+        <dt>The same change gets the same process</dt>
+        <dd>The process comes from your policy, not from the agent. Each repository can extend a shared policy, and <code>compass policy diff</code> shows what a policy change allows or refuses.</dd>
+      </div>
+      <div>
+        <dt>Every change can be audited</dt>
+        <dd>Each change keeps its documents, approvals and test evidence in the repository. An approval records who approved, in what role and when.</dd>
+      </div>
+      <div>
+        <dt>Try it before you enforce it</dt>
+        <dd>With <code>adoption: advisory</code>, a failed check is reported but does not block, so a team can try Compass without slowing delivery. <code>autonomy</code> sets how often a session stops for a person.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<section class="chapter" id="assess">
+  <div class="wrap chapter-grid">
+    <div class="chapter-copy">
+      <p class="num">1</p>
+      <h2>Compass reads the change before it plans the work</h2>
+      <p>Before Compass does anything else, it asks four questions about the change. What happens if this goes wrong? Is the affected code understood? How much delivery work is involved? What outcome is wanted?</p>
+      <p>The answers are words, not numbers. Risk runs from <code>trivial</code> to <code>critical</code>. Familiarity says whether the code is new, or existing code with or without scenarios: Given/When/Then tests that describe what it does now. Size runs from <code>atomic</code> to <code>product</code>. Goal is <code>delivery</code> or <code>exploration</code>.</p>
+      <p>This is the only place judgement enters. A person, or the agent, answers the four questions. Everything after that is computed, and the answers are written into the record so anyone can see what the process was built from.</p>
+    </div>
+    <figure class="instrument" data-fig="dims">
+      <div class="inst-head"><figcaption class="cap">The four dimensions and their words</figcaption><div class="inst-ctl"><input type="range" id="scrub-dims" min="0" max="1000" value="1000" aria-label="Scrub the animation"><button class="replay" type="button">Replay</button></div></div>
+      <svg viewBox="0 0 720 510" role="img" aria-label="Animated: risk, size and goal draw in as scales of words, with the direction that counts as tighter. Familiarity is drawn as three small graphs of what the code does. For new code the curve is drawn fresh. For existing code with no scenarios, many possible curves fit and keep moving. For existing code with scenarios, the scenario points land on the graph and the curves collapse to the one they pin. An arrow labelled behavior-mapping links the no-scenarios graph to the with-scenarios graph."></svg>
+      <p class="inst-note">Risk and size are ordered: a higher word means a tighter process. Familiarity and goal are plain choices.</p>
+    </figure>
+  </div>
+</section>
+
+<section class="chapter tinted" id="space">
+  <div class="wrap chapter-grid flip">
+    <div class="chapter-copy">
+      <p class="num">2</p>
+      <h2>A typo and an auth change get different processes</h2>
+      <p>Put size along one axis and risk along the other and every change is a point. The shipped policy divides that plane into three approaches. Small and contained is a <strong>quick fix</strong>. Medium is <strong>regular</strong>, the default approach. Large work is <strong>full</strong>.</p>
+      <p>Some rules set a minimum approach, whatever the size. Compass calls them floors. A <code>critical</code> risk forces full. So does a label like <code>auth</code>, <code>payments</code> or <code>migrations</code>: domain risk overrides size, and a one-line auth change is not small.</p>
+      <p>A hotfix and a spike sit outside this plane. A live defect that is small enough gets reproduced and fixed first. Exploration gets a time box and ships nothing directly.</p>
+    </div>
+    <figure class="instrument" data-fig="plane">
+      <div class="inst-head"><figcaption class="cap">Size against risk, with the shipped approaches</figcaption><div class="inst-ctl"><input type="range" id="scrub-plane" min="0" max="1000" value="1000" aria-label="Scrub the animation"><button class="replay" type="button">Replay</button></div></div>
+      <svg viewBox="0 0 720 440" role="img" aria-label="Animated: a grid of size by risk fills with three regions, three example changes land in them, and an auth-labelled change is lifted from quick fix to full by a floor rule."></svg>
+      <p class="inst-note">Two of the four dimensions. Familiarity adds a floor of its own: on a medium or larger change to existing code with no scenarios, Compass writes the scenarios before the code changes.</p>
+    </figure>
+  </div>
+</section>
+
+<section class="chapter" id="stages">
+  <div class="wrap chapter-grid">
+    <div class="chapter-copy">
+      <p class="num">3</p>
+      <h2>The same stages every time, at a different depth</h2>
+      <p>Every change goes through the same eight stages: assess, define, refine, plan, breakdown, implement, verify, ship. What the approach changes is how deep each stage goes. A stage can be <code>thorough</code>, <code>lightweight</code> or <code>collapsed</code>, which cuts it to one line, such as a plan that names the file to edit. Breakdown either splits the work across agents (<code>multiagent</code>) or is <code>skipped</code>.</p>
+      <p>A quick fix collapses refine and plan, skips breakdown and keeps verify light: one acceptance criterion, a focused change, and evidence that it works. A full approach runs every stage thoroughly and may split the work across several agents in parallel.</p>
+      <p>The stages stay recognisable whatever the depth, so a reviewer always knows where a piece of work is and what comes next.</p>
+    </div>
+    <figure class="instrument" data-fig="stages">
+      <div class="inst-head"><figcaption class="cap">How deep each stage goes</figcaption><div class="inst-ctl"><input type="range" id="scrub-stages" min="0" max="1000" value="1000" aria-label="Scrub the animation"><button class="replay" type="button">Replay</button></div></div>
+      <svg viewBox="0 0 720 340" role="img" aria-label="Animated: eight stage bars change height as the approach moves from quick fix to regular to full."></svg>
+      <div class="chips" role="group" aria-label="Pick an approach">
+        <button type="button" data-approach="quick">Quick fix</button>
+        <button type="button" data-approach="regular" aria-pressed="true">Regular</button>
+        <button type="button" data-approach="full">Full</button>
+      </div>
+      <p class="inst-note">Depths from the shipped default policy in Compass 7.0.0. Your policy can change them, and <code>compass approach evaluate --verbose</code> prints the ones in force.</p>
+    </figure>
+  </div>
+</section>
+
+<section class="chapter tinted" id="guardrails">
+  <div class="wrap chapter-grid flip">
+    <div class="chapter-copy">
+      <p class="num">4</p>
+      <h2>Hard rules stop the work. Good practice guides it.</h2>
+      <p>Compass separates two things that process frameworks often confuse. <strong>Guardrails</strong> are few, hard and checkable. A guardrail is cleared only with evidence, and a breach stops the work. <strong>Strategies</strong> are strong defaults, like BDD, TDD and decision records, that apply when they add value and never block on their own.</p>
+      <dl class="rules">
+        <dt>The five default guardrails</dt>
+        <dd><code>G1</code> Tested before it lands. <code>G2</code> Acceptance defined before it is built. <code>G3</code> Traceability holds. <code>G4</code> Evidence, not assertion. <code>G5</code> A human signs off on the irreversible.</dd>
+      </dl>
+      <dl class="rules soft">
+        <dt>Strategies</dt>
+        <dd>Behaviour specs in Gherkin, red-then-green tests, architecture decision records, visual architecture models. Assessed at verify. They never block.</dd>
+      </dl>
+    </div>
+    <figure class="instrument" data-fig="guard">
+      <div class="inst-head"><figcaption class="cap">A change travelling to ship</figcaption><div class="inst-ctl"><input type="range" id="scrub-guard" min="0" max="1000" value="1000" aria-label="Scrub the animation"><button class="replay" type="button">Replay</button></div></div>
+      <svg viewBox="0 0 720 360" role="img" aria-label="Animated: a change moves left to right, passes through dotted strategy lines, and stops at each solid guardrail until evidence opens it."></svg>
+      <p class="inst-note">Solid lines block until evidence opens them. Dotted lines guide and are assessed at verify.</p>
+    </figure>
+  </div>
+</section>
+
+<section class="chapter" id="policy">
+  <div class="wrap chapter-grid">
+    <div class="chapter-copy">
+      <p class="num">5</p>
+      <h2>Your team sets the rules, in one file</h2>
+      <p>A payments team and an early-stage startup need different processes. The shipped default is a starting point. A team changes it in one file, <code>compass.yml</code>, and Compass shows whether each change makes the rules stricter or weaker.</p>
+      <p>Everything after the assessment is computed, not judged. The same four answers under the same policy produce the same approach, every time. So when a change gets a heavier process than you expected, you argue with the policy, not with the agent.</p>
+      <p>Some guardrails are locked. A team can add to them and can tighten them, but loosening one needs a recorded waiver, and human sign-off on the irreversible cannot be switched off at all.</p>
+    </div>
+    <figure class="instrument" data-fig="policy">
+      <div class="inst-head"><figcaption class="cap">One line in compass.yml, and what it does to the plane</figcaption><div class="inst-ctl"><input type="range" id="scrub-policy" min="0" max="1000" value="1000" aria-label="Scrub the animation"><button class="replay" type="button">Replay</button></div></div>
+      <svg viewBox="0 0 720 420" role="img" aria-label="Animated: a floor rule for the billing label is typed into compass.yml; a billing change jumps from quick fix to full; three runs of the same assessment give the same answer."></svg>
+      <p class="inst-note"><code>compass policy diff</code> compares two configurations and lists what one accepts that the other does not.</p>
+    </figure>
+  </div>
+</section>
+
+<section class="chapter tinted" id="record">
+  <div class="wrap chapter-grid flip">
+    <div class="chapter-copy">
+      <p class="num">6</p>
+      <h2>Anyone can see what was done and why</h2>
+      <p>As the stages run, Compass writes the issue's documents into <code>docs/compass/</code> and its manifest and evidence into <code>.compass/work/</code>. The record holds the decision, the approach including what was left out and why, only the documents the work justified, and the evidence behind each check.</p>
+      <p>That record is enough for another session, or another person, to pick the work up without the chat history. <code>compass board render</code> shows every issue on one page, with a lane for each stage.</p>
+      <p>Compass is built with Compass. Every pull request to it must pass <code>compass ci</code>, as its <a href="{{ site.compass.url }}/blob/main/CONTRIBUTING.md">contributing guide</a> says, and its <a href="{{ site.compass.url }}/tree/main/architecture/decisions">architecture decision records</a> are public.</p>
+    </div>
+    <figure class="instrument" data-fig="record">
+      <div class="inst-head"><figcaption class="cap">The record growing as the stages pass</figcaption><div class="inst-ctl"><input type="range" id="scrub-record" min="0" max="1000" value="1000" aria-label="Scrub the animation"><button class="replay" type="button">Replay</button></div></div>
+      <svg viewBox="0 0 720 440" role="img" aria-label="Animated: eight stage markers light in turn while the files of the issue's record appear beneath them."></svg>
+      <p class="inst-note">File names from the <a href="{{ site.compass.url }}/tree/main/examples/feature-api-change/docs/compass/2026-04-21-rate-limit-search-endpoint">rate-limit example</a> in the Compass repository. Open it to read the real documents.</p>
+    </figure>
   </div>
 </section>
 
@@ -76,125 +189,25 @@ scripts: ["/assets/js/site.js"]
       <div class="code"><code>/plugin install compass@compass</code><button type="button" class="copy" data-copy="/plugin install compass@compass">Copy</button></div>
       <p class="code-after">Then describe the work:</p>
       <div class="code"><code>/compass:assess "Add rate limiting to the public API"</code><button type="button" class="copy" data-copy='/compass:assess "Add rate limiting to the public API"'>Copy</button></div>
+      <p class="code-after">Compass answers the four questions, then computes the approach from the policy:</p>
+      <pre class="output"><code>first approach  : regular  &lt;- RP-SHAPE-005 (The default working shape.)
+FINAL APPROACH  : regular
+policy rules fired: none
+parallel subtasks: up to 2 (a ceiling - breakdown sets the orchestration once the distribution map exists)
+per-stage weight:
+  assess     : thorough
+  define     : thorough
+  refine     : lightweight
+  plan       : thorough
+  breakdown  : multiagent
+  implement  : thorough
+  verify     : thorough
+  ship       : thorough
+gate set        : verify.correctness, verify.governance, verify.traceability, verify.regression, verify.clarity, verify.security</code></pre>
+      <p class="small">Real output of <code>compass approach evaluate --verbose</code> from Compass 7.0.0, for the assessment in the hero figure. The lines that repeat the assessment and name the policy file are left out.</p>
       <p class="small">Prefer source? <a href="{{ site.compass.url }}#start-here">Clone and install from GitHub</a>. Compass sits alongside your CI. It doesn't replace your tests, linting or security scanning.</p>
       <p class="visually-hidden" aria-live="polite" data-copy-status></p>
     </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="prose-block">
-      <h2>You don't pick the process. The work does.</h2>
-      <p>A typo fix shouldn't need an architecture pack. A payments rewrite shouldn't start from an unstructured prompt. Most spec-driven setups give you one workflow for everything, or leave you to choose one each time.</p>
-      <p>Compass puts the judgement in one place: the assessment. Everything after it is deterministic. The same assessment under the same policy gives the same approach, every time, so you can see why a change got the process it did and argue with the policy rather than the agent.</p>
-    </div>
-
-    <figure class="pipeline">
-      <ol>
-        <li>assess</li><li>define</li><li>plan</li><li>implement</li><li>verify</li><li>ship</li>
-      </ol>
-      <figcaption>Every change goes through the same six stages. How deep each one goes is what changes.</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="section tinted" id="teams">
-  <div class="wrap two-col">
-    <div>
-      <h2>What your team controls</h2>
-      <p>The rules live in one file in each repository, <code>compass.yml</code>, which you review like any other code.</p>
-      <dl class="controls">
-        <div>
-          <dt>Who signs off</dt>
-          <dd>A person must approve auth and access changes, payments, personal data, migrations and anything that could lose data or resist rollback. The record names the approver, their role, the decision, the time and the scope.</dd>
-        </div>
-        <div>
-          <dt>One policy across repositories</dt>
-          <dd>Each repository can extend a shared policy, pinned to an exact commit. <code>compass policy diff</code> shows whether a change to it tightens or loosens the rules.</dd>
-        </div>
-        <div>
-          <dt>Whether checks block</dt>
-          <dd>With <code>adoption: enforced</code>, a failed check fails <code>compass check</code> and CI. Use <code>advisory</code> to pilot Compass without blocking delivery.</dd>
-        </div>
-        <div>
-          <dt>How often agents stop</dt>
-          <dd><code>autonomy</code> sets whether a session waits for a person at every hand-off, some of them, or none.</dd>
-        </div>
-      </dl>
-      <p class="small">Compass governs its own workflow, not every agent action. Keep branch protection, code review and CI. Read the <a href="https://docs.ayeo.io/compass/safety-contract/">safety contract</a> and the <a href="https://docs.ayeo.io/compass/configuration/">configuration guide</a>.</p>
-    </div>
-    <pre class="tree policy" tabindex="0" role="region" aria-label="Example compass.yml"><code><span># compass.yml (example)</span>
-schema: 1
-
-<span># Share one policy, pinned to a commit</span>
-extends: github:acme/compass-banking@1.2.0#3f9c1a2e…
-
-<span># Approves waivers and confirms agents' decisions</span>
-owner: tech-lead
-
-<span># A failed check fails CI</span>
-adoption: enforced
-
-<span># Wait for a person at every hand-off</span>
-autonomy: controlled</code></pre>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <h2>Rigour without ritual</h2>
-    <div class="rules">
-      <div>
-        <h3>Guardrails</h3>
-        <p>Few, checkable and blocking. The CLI enforces them.</p>
-        <ul>
-          <li>Tested before it ships</li>
-          <li>Acceptance defined before implementation</li>
-          <li>Every change traced to what asked for it</li>
-          <li>Evidence, not assertion</li>
-          <li>A person approves anything irreversible</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Strategies</h3>
-        <p>Strong defaults that apply when they add value, and step aside when they don't.</p>
-        <ul>
-          <li>Behaviour specs as Given/When/Then scenarios</li>
-          <li>Test-driven development</li>
-          <li>Architecture decision records and diagrams</li>
-          <li>Parallel agents, each in its own git worktree</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section tinted">
-  <div class="wrap two-col">
-    <div>
-      <h2>Every change leaves a record</h2>
-      <p>Each issue gets a folder you can review and resume from, without relying on chat history. It shows the current decision, what needs your approval, the approach Compass chose, what it left out and why, and the evidence behind each stage.</p>
-      <p>Another session, or another person, can pick it up from there.</p>
-    </div>
-    <pre class="tree" tabindex="0" role="region" aria-label="Example record folder"><code>.compass/work/rate-limiting/
-├── dashboard        <span>current decision, what needs approval</span>
-├── approach         <span>what was chosen, and what was left out</span>
-├── spec.feature     <span>the behaviour, as scenarios</span>
-├── design           <span>proportionate to the risk</span>
-└── evidence/        <span>test runs, approvals and checks</span></code></pre>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <h2>Open and portable</h2>
-    <p class="narrow">Compass is open source under the {{ site.compass.licence }} licence. It runs on Claude Code today, and its core doesn't depend on it.</p>
-    <dl class="layers">
-      <div><dt>Methodology</dt><dd>The guidance, governance and templates, in plain language.</dd></div>
-      <div><dt>Kit</dt><dd>The Python command-line tool and policy engine. It doesn't depend on Claude Code.</dd></div>
-      <div><dt>Adapter</dt><dd>The Claude Code plugin: commands, agents, skills and hooks. An adapter for another tool would reuse the kit.</dd></div>
-    </dl>
   </div>
 </section>
 
@@ -202,7 +215,7 @@ autonomy: controlled</code></pre>
 <section class="section tinted" id="news">
   <div class="wrap">
     <div class="section-head">
-      <h2>What we plan to build</h2>
+      <h2>News and plans</h2>
       {%- if latest.length %}<a href="/news/">All news</a>{% endif %}
     </div>
     <p class="narrow">Before we build anything, we write the announcement and the FAQ as if it had already shipped. When we commit to one, it goes up here with its status, so you can see what's coming and tell us early if we've got it wrong.</p>

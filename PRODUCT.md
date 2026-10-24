@@ -35,7 +35,7 @@ ayeo also works in public: it writes the press release before building a feature
 - Compass runs inside Claude Code. Install is two `/plugin` commands, then `/compass:assess "<change>"`. It needs Python 3.10 or later.
 - The source, docs and issues live at `github.com/ayeo-io/compass` (set in `src/_data/site.js`).
 - Compass sits alongside CI. It does not replace tests, linting or security scanning.
-- Each Compass issue leaves a record folder under `.compass/work/<issue>/` that another session or person can resume from.
+- Each Compass issue leaves a record that another session or person can resume from: its documents under `docs/compass/<created>-<issue>/` and its evidence under `.compass/work/<issue>/`.
 - News posts are written from `templates/prfaq.md` and carry a status: `planned`, `building`, `shipped` or `shelved`. An Atom feed is published at `/news/feed.xml`.
 
 ## Capabilities and Constraints
@@ -51,7 +51,8 @@ ayeo also works in public: it writes the press release before building a feature
 
 - The name is written in lower case: "ayeo". The product is "Compass", introduced as "Compass, from ayeo".
 - The existing copy is plain, direct British English. It names what happens, admits limits ("Illustrative", "doesn't replace your tests") and avoids hype.
-- Existing assets: the Compass mark (`src/assets/compass-mark.png`, `mark-*.png`), the favicon and the social image (`src/assets/og.png`).
+- The visual identity is the ayeo masterbrand design system: cool paper, deep navy ink, a cyan signal on the navy instrument and one copper accent, set in IBM Plex Sans and IBM Plex Mono. Compass is endorsed as "Compass, from ayeo" and shares the copper accent. `DESIGN.md` records how this site applies the system.
+- Existing assets: the ayeo mark (`src/assets/mark-*.png`), the Compass mark (`src/assets/compass-mark.png`), the favicon and the social image (`src/assets/og.png`).
 
 ## Evidence on Hand
 

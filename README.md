@@ -39,8 +39,10 @@ src/index.njk               home page
 src/_data/assessments.js    the examples in the "pick a change" panel
 src/_data/site.js           site settings, including the Compass repo
 src/news/                   news posts (one Markdown file each)
-src/assets/css/site.css     all the styles
+src/assets/css/site.css     all the styles, with the design tokens at the top
+src/assets/fonts/           self-hosted fonts (the CSP allows no others)
 templates/prfaq.md          template for new posts
+DESIGN.md                   how this site applies the ayeo design system
 ```
 
 ## Hosting
