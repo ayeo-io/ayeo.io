@@ -57,7 +57,6 @@ ayeo also works in public: it writes the press release before building a feature
 ## Evidence on Hand
 
 - The public Compass repository (`ayeo-io/compass`): its code, docs and real assessment output can be quoted and shown.
-- The published post "Why we write the press release first" (`src/news/2026-10-06-why-we-write-the-press-release-first.md`).
 - There are no users, testimonials, customer logos, adoption numbers or benchmarks. Future work must not invent any.
 
 ## Product Principles
