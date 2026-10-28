@@ -1,0 +1,44 @@
+---
+layout: base.njk
+permalink: /privacy/
+title: Privacy
+summary: Compass runs on your machine and sends no data to ayeo. This page lists when Compass reaches the network, and what this website stores.
+---
+{#- TODO(owner): name the legal entity responsible for this policy and its postal address. -#}
+{#- TODO(owner): add a contact email for privacy requests. -#}
+{#- TODO(owner): state the jurisdiction and governing law, if this policy needs one. -#}
+<section class="section">
+  <div class="wrap">
+    <h1>Privacy</h1>
+    <p class="lede narrow">Compass runs on your own machine, in your repository. ayeo does not run a service for it, and Compass sends no data to ayeo.</p>
+    <div class="prose">
+      <h2>What ayeo collects through Compass</h2>
+      <p>Nothing. Compass is an open-source plugin for Claude Code. It runs locally with your own permissions. There is no ayeo account, server or telemetry.</p>
+  
+      <h2>When Compass reaches the network</h2>
+      <p>Compass reaches the network only when you ask for it, in these cases:</p>
+      <ul>
+        <li>It fetches a brief you name over HTTPS, with <code>compass intent ingest --from &lt;url&gt;</code>. It refuses any scheme but <code>https</code>.</li>
+        <li>It fetches a git parent that <code>extends:</code> names in your project's <code>compass.yml</code>, for one pinned commit.</li>
+        <li>It sends your delivery record to a git repository you configure, with <code>compass record sync</code>. It redacts credentials first.</li>
+        <li>It starts Claude Code sessions with <code>compass run</code>. Those sessions send their prompts through Claude Code, as any session does.</li>
+        <li>It writes labels and comments to a linked GitHub issue with <code>gh</code>, only when you turn on <code>github_labels</code>.</li>
+      </ul>
+  
+      <h2>What Compass reads on your machine</h2>
+      <p>When a quick fix finishes, Compass reads the current Claude Code session's own transcript. It keeps only token counts, model names and times. It keeps them on your machine.</p>
+  
+      <h2>Other services you connect</h2>
+      <p>Claude Code, GitHub, your git remote and any other service you connect to Compass handle your data under their own policies. ayeo does not control them.</p>
+  
+      <h2>This website</h2>
+      <p>ayeo.io sets no cookies and runs no analytics or tracking. It loads its fonts, scripts and styles from ayeo.io only.</p>
+      <p>If you choose a light or dark theme, your browser stores that choice in its local storage, on your device. The site does not send it anywhere.</p>
+      <p>The site is hosted on Cloudflare. Cloudflare handles requests to the site under its own policy.</p>
+      {#- TODO(owner): confirm that Cloudflare Web Analytics and other zone-level features that collect visitor data are off for ayeo.io, and state how long Cloudflare keeps request logs, if this policy must say. #}
+  
+      <h2>The full account</h2>
+      <p>Compass's <a href="{{ site.compass.url }}/blob/main/docs/security.md">security document</a> describes everything Compass runs, reads, sends and fetches.</p>
+    </div>
+  </div>
+</section>
