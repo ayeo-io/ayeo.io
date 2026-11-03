@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "ayeo-io",
+  "account_id": "1607e088a8b689af382ba824d7c93669",
   "compatibility_date": "2026-10-06",
   "assets": {
     "directory": "./_site",
