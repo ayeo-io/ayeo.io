@@ -18,7 +18,7 @@ layout: base.njk
     <aside class="status-box status-box-{{ status }}">
       <p><strong>{{ status | statusLabel }}.</strong> {{ statusUpdate or (status | statusNote) }}</p>
       {%- if status == "shipped" and shipped %}<p>Shipped {{ shipped | readableDate }}{% if release %} in <a href="{{ release.url }}">{{ release.name }}</a>{% endif %}.</p>{% endif %}
-      {%- if status in ["planned", "building"] %}<p>This was written before the work was done. <a href="{{ site.compass.url }}/discussions">Tell us what we've got wrong</a>.</p>{% endif %}
+      {%- if status in ["planned", "building"] %}<p>This was written before the work was done. <a href="{{ feedbackUrl or (site.compass.url + '/discussions') }}">Tell us what we've got wrong</a>.</p>{% endif %}
     </aside>
     {%- endif %}
 
