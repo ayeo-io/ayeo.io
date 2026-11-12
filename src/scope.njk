@@ -1,0 +1,104 @@
+---
+layout: base.njk
+permalink: /scope.html
+canonicalPath: /scope
+title: Scope for Mac
+summary: Scope scans a full SSD in under a minute and draws every folder as a map you can read. Find what takes the space, then send it to the Trash.
+---
+{#- The copy is docs/website/product.md in ayeo-io/scope, word for word.
+    The App Store listing uses the same wording and links to /scope,
+    /scope/support and /scope/privacy, so keep those addresses. The download
+    links are text: Apple's App Store badge has its own marketing rules. -#}
+{%- set appStore = "https://apps.apple.com/app/id6830725423" %}
+<div class="scope">
+  <section class="band scope-hero">
+    <div class="wrap">
+      <div class="scope-mast">
+        <img src="/assets/scope/icon.png" alt="" width="56" height="56">
+        <p><strong>Scope</strong><br><span>Disk space analyser for macOS</span></p>
+      </div>
+      <h1>See where your disk has gone.</h1>
+      <p class="scope-lede">Scope scans a full SSD in under a minute and draws every folder as a map you can read. Find what takes the space, then send it to the Trash.</p>
+      <div class="scope-cta">
+        <a class="button" href="{{ appStore }}" target="_blank" rel="noopener">Download on the Mac App Store</a>
+        <p>macOS 14 or later · One purchase, no subscription</p>
+      </div>
+      <img class="scope-shot" src="/assets/scope/1-map.png" alt="Scope's window showing a 1 TB volume as a treemap, with Users, Applications and Library as the largest rectangles" width="1440" height="900">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap scope-reasons">
+      <p><strong>Fast.</strong> The map appears within a second and fills in as the scan runs. Nine million entries scan in 35 seconds on an M4 Pro.</p>
+      <p><strong>Honest.</strong> A folder Scope cannot read is drawn and counted, not skipped. Sizes are what files take on disk. The total says what it could and could not see.</p>
+      <p><strong>Yours.</strong> No account, no network, no telemetry. Your scan never leaves your Mac.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Two ways to look</h2>
+      <div class="scope-pair">
+        <div>
+          <img class="scope-shot" src="/assets/scope/3-types.png" alt="The Developer folder as a flat treemap coloured by file type" width="1440" height="900" loading="lazy">
+          <p><strong>The flat map.</strong> A treemap in the classic SpaceMonger style: every folder a labelled rectangle sized by what it holds, its subfolders nested inside. Click to zoom in; the breadcrumb takes you back.</p>
+        </div>
+        <div>
+          <img class="scope-shot" src="/assets/scope/4-3d-types.png" alt="The same Developer folder as a 3D platter of blocks, coloured by file type" width="1440" height="900" loading="lazy">
+          <p><strong>The 3D map.</strong> The same disk as a platter of blocks. Orbit, zoom and pan. Each block's height is its size, or its age. Switch with one click and keep your place, your selection and your filters.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Colour it the way you need</h2>
+      <ul class="scope-modes">
+        <li class="mode-depth"><strong>Depth</strong> shows how deep each folder sits.</li>
+        <li class="mode-type"><strong>Type</strong> tells code, build output and caches, media, archives and apps apart.</li>
+        <li class="mode-age"><strong>Age</strong> shows what you have not touched in months.</li>
+        <li class="mode-clearable"><strong>Clearable</strong> picks out build output, package caches, simulators and containers: space you can get back and rebuild.</li>
+        <li class="mode-change"><strong>Change</strong> compares with your last scan: what grew, what shrank, what is new and what is gone.</li>
+      </ul>
+      <p class="scope-note">Filter by name, kind or age to see only the caches, the videos or the files older than a year.</p>
+      <div class="scope-pair">
+        <img class="scope-shot" src="/assets/scope/5-ages.png" alt="The volume coloured by age, from recent to years old" width="1440" height="900" loading="lazy">
+        <img class="scope-shot" src="/assets/scope/8-filter.png" alt="The folder filter matching Developer, with the rest of the map dimmed" width="1440" height="900" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Free the space, carefully</h2>
+      <ul class="scope-list">
+        <li><strong>Move to Trash</strong>, with Undo. Scope never deletes permanently and never empties the Trash.</li>
+        <li><strong>Rescan Folder</strong> scans one folder again and updates every size above it. No full rescan after a clear-out.</li>
+        <li><strong>Reveal in Finder</strong>, open with the app you choose, or copy the path.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap scope-text">
+      <h2>Made for developers</h2>
+      <p>node_modules, DerivedData, simulator runtimes, Docker images and package caches are what quietly fill a developer's disk, and Scope shows them first. The same map finds the forgotten video exports and the photo library you copied twice.</p>
+
+      <h2>What Scope is not</h2>
+      <p class="scope-not">Not a cleaner. Not an optimiser. Not a duplicate finder. Scope shows you the disk; what you delete is your call.</p>
+
+      <div class="scope-cta">
+        <a class="button" href="{{ appStore }}" target="_blank" rel="noopener">Download on the Mac App Store</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="scope-foot">
+    <div class="wrap">
+      <p>Requires macOS 14 or later. The 3D map needs Metal.</p>
+      <p><a href="/scope/support">Support</a> · <a href="/scope/privacy">Privacy policy</a> · <a href="mailto:support@ayeo.io">support@ayeo.io</a></p>
+      <p>© 2026 Ayeo Ltd</p>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,20 @@
+---
+layout: base.njk
+permalink: /scope/privacy.html
+canonicalPath: /scope/privacy
+title: Scope privacy policy
+summary: This policy explains what Scope does with your data.
+---
+{#- The text comes from src/_includes/scope/privacy.md, a copy of
+    docs/website/privacy.md in ayeo-io/scope. Change it there first: the App
+    Store privacy label matches this wording. The page is served at
+    /scope/privacy because the App Store listing links to that address. -#}
+<section class="section scope-doc">
+  <div class="wrap">
+    <p class="scope-crumb"><a href="/scope">Scope</a></p>
+    <h1>Scope privacy policy</h1>
+    <div class="prose">
+      {{ "privacy" | scopeDoc | safe }}
+    </div>
+  </div>
+</section>

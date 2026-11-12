@@ -2,6 +2,7 @@ import { EleventyRenderPlugin } from "@11ty/eleventy";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
+import markdownIt from "markdown-it";
 
 const isServe = process.env.ELEVENTY_RUN_MODE === "serve";
 const showDrafts = isServe || process.env.SHOW_DRAFTS === "1";
@@ -44,6 +45,16 @@ export default function (eleventyConfig) {
     return `${url}?v=${hash}`;
   });
 
+  // The Scope privacy and support pages render the Markdown files from the
+  // ayeo-io/scope repository, kept byte for byte in src/_includes/scope/,
+  // because the App Store listing and the app's privacy label use the same
+  // wording. The first line is the page title, so the page layout shows it
+  // and this filter drops it.
+  eleventyConfig.addFilter("scopeDoc", (name) => {
+    const source = readFileSync(`src/_includes/scope/${name}.md`, "utf8");
+    return scopeMarkdown.render(source.replace(/^# .*\n/, ""));
+  });
+
   eleventyConfig.addPlugin(feedPlugin, {
     type: "atom",
     outputPath: "/news/feed.xml",
@@ -63,6 +74,24 @@ export default function (eleventyConfig) {
     htmlTemplateEngine: "njk",
   };
 }
+
+// The Scope documents write addresses and the support email as plain text,
+// and put contact lines on separate lines without Markdown line breaks.
+// linkify makes them links without changing the text; fuzzyLink is off so
+// names such as io.ayeo.scope stay text. Links to other sites open in a new tab.
+const scopeMarkdown = markdownIt({ html: false, linkify: true, breaks: true });
+scopeMarkdown.linkify.set({ fuzzyLink: false });
+const defaultLinkOpen =
+  scopeMarkdown.renderer.rules.link_open ??
+  ((tokens, idx, options, env, self) => self.renderToken(tokens, idx, options));
+scopeMarkdown.renderer.rules.link_open = (tokens, idx, options, env, self) => {
+  const href = tokens[idx].attrGet("href") ?? "";
+  if (/^https?:\/\//.test(href) && !/^https:\/\/ayeo\.io(\/|$)/.test(href)) {
+    tokens[idx].attrSet("target", "_blank");
+    tokens[idx].attrSet("rel", "noopener");
+  }
+  return defaultLinkOpen(tokens, idx, options, env, self);
+};
 
 const statusLabels = {
   planned: { label: "Planned", note: "We have written the PRFAQ and committed to building it." },

@@ -1,0 +1,20 @@
+---
+layout: base.njk
+permalink: /scope/support.html
+canonicalPath: /scope/support
+title: Scope support
+summary: Scope shows you where your disk has gone. This page answers the questions we get most.
+---
+{#- The text comes from src/_includes/scope/support.md, a copy of
+    docs/website/support.md in ayeo-io/scope. Change it there first. The page
+    is served at /scope/support because the App Store listing links to that
+    address. -#}
+<section class="section scope-doc">
+  <div class="wrap">
+    <p class="scope-crumb"><a href="/scope">Scope</a></p>
+    <h1>Scope support</h1>
+    <div class="prose">
+      {{ "support" | scopeDoc | safe }}
+    </div>
+  </div>
+</section>

@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {%- set pageTitle = (title + " - ayeo") if title else "Compass for Claude Code: process that matches each change - ayeo" %}
   {%- set pageDescription = summary or subtitle or site.description %}
+  {%- set pageUrl = site.url + (canonicalPath or page.url) %}
   <title>{{ pageTitle }}</title>
   <meta name="description" content="{{ pageDescription }}">
-  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="canonical" href="{{ pageUrl }}">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0b0b0e" media="(prefers-color-scheme: dark)">
   <meta property="og:type" content="{{ 'article' if layout == 'post.njk' else 'website' }}">
   <meta property="og:site_name" content="ayeo">
   <meta property="og:title" content="{{ title or 'Compass for Claude Code: process that matches each change' }}">
   <meta property="og:description" content="{{ pageDescription }}">
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:url" content="{{ pageUrl }}">
   <meta property="og:image" content="{{ site.url }}/assets/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.ico" sizes="32x32">

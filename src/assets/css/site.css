@@ -562,3 +562,51 @@ svg text { font-size: 14px; }
   .ca button svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
   .ca input[type=range] { flex: 1; accent-color: var(--ca-accent); min-width: 0; }
   .ca-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Scope: the product page at /scope and its privacy and support pages.
+   The bands reuse the navy panel; the mode swatches match the colours the
+   app uses for each colour mode. */
+.scope-hero { padding-top: clamp(2.5rem, 6vw, 4.5rem); }
+.scope-hero h1 { color: var(--panel-heading); max-width: 13em; }
+.scope-mast { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.5rem; }
+.scope-mast img { width: 56px; height: 56px; border-radius: 13px; flex: none; }
+.scope-mast p { margin: 0; line-height: 1.3; }
+.scope-mast strong { color: var(--panel-heading); font-size: var(--step-1); }
+.scope-mast span { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.band .scope-lede { font-size: var(--step-1); line-height: 1.5; color: var(--panel-text); max-width: 34em; }
+.scope-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; margin: 1.75rem 0 0; }
+.scope-cta p { margin: 0; font-size: var(--step--1); }
+.scope-shot { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); }
+.band .scope-shot { box-shadow: 0 1.5rem 3.5rem rgba(0, 0, 0, 0.35); }
+.scope-hero .scope-shot { margin-top: clamp(2rem, 5vw, 3rem); }
+.band strong { color: var(--panel-heading); }
+.scope-reasons { display: grid; gap: 1.5rem clamp(2rem, 4vw, 3rem); }
+@media (min-width: 48rem) { .scope-reasons { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.scope-reasons p { margin: 0; color: var(--ink-2); border-top: 3px solid var(--ink); padding-top: 1rem; }
+.scope-reasons strong { display: block; color: var(--ink); font-size: var(--step-2); letter-spacing: -0.01em; margin-bottom: 0.4rem; }
+.scope-pair { display: grid; gap: 2rem; align-items: start; margin-top: 1.5rem; }
+@media (min-width: 48rem) { .scope-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.scope-pair p { margin: 1.25rem 0 0; }
+.scope-modes { list-style: none; margin: 1.5rem 0; padding: 0; display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); }
+.scope-modes li { border: 1px solid var(--rule); border-radius: var(--radius); background: var(--paper-2); padding: 0.85rem 1rem; color: var(--ink-2); min-width: 0; }
+.scope-modes strong { display: flex; align-items: center; gap: 0.5rem; color: var(--ink); }
+.scope-modes strong::before { content: ""; width: 12px; height: 12px; border-radius: 3px; background: var(--swatch); flex: none; }
+.mode-depth { --swatch: #4f8fcd; }
+.mode-type { --swatch: #d9693f; }
+.mode-age { --swatch: #b08d2c; }
+.mode-clearable { --swatch: #5b9c5a; }
+.mode-change { --swatch: #8b5bb3; }
+.scope-note { color: var(--ink-2); max-width: 38em; }
+.scope-list { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: 0.9rem; max-width: 42em; }
+.scope-list li { position: relative; padding-left: 1.4rem; color: var(--panel-text); }
+.scope-list li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 8px; height: 8px; border-radius: 2px; background: var(--needle); }
+.scope-text > * { max-width: 42em; }
+.scope-text h2 + p { color: var(--ink-2); }
+.scope-text h2:not(:first-child) { margin-top: 2.5rem; }
+.scope-not { border-left: 4px solid var(--link); padding-left: 1.1rem; font-size: var(--step-1); color: var(--ink); }
+.scope-foot { border-top: 1px solid var(--rule); padding: 1.75rem 0; font-size: var(--step--1); color: var(--ink-2); }
+.scope-foot p { margin: 0 0 0.35rem; }
+.scope-foot a { color: var(--ink); }
+.scope-crumb { margin: 0 0 1rem; font-size: var(--step--1); }
+.scope-doc h1 { font-size: var(--step-3); }
+.scope-doc .prose { overflow-wrap: anywhere; }
