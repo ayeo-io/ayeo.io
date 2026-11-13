@@ -1,0 +1,20 @@
+---
+layout: base.njk
+permalink: /scope/accessibility.html
+canonicalPath: /scope/accessibility
+title: Scope accessibility
+summary: Scope follows the macOS accessibility settings rather than adding its own. This page says what each one does in Scope, and where the limits are.
+---
+{#- The text comes from src/_includes/scope/accessibility.md, a copy of
+    docs/website/accessibility.md in ayeo-io/scope. Change it there first. The
+    page is served at /scope/accessibility so the App Store listing can link to
+    it next to /scope/support and /scope/privacy. -#}
+<section class="section scope-doc">
+  <div class="wrap">
+    <p class="scope-crumb"><a href="/scope">Scope</a></p>
+    <h1>Scope accessibility</h1>
+    <div class="prose">
+      {{ "accessibility" | scopeDoc | safe }}
+    </div>
+  </div>
+</section>
