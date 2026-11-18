@@ -4,6 +4,28 @@ permalink: /scope.html
 canonicalPath: /scope
 title: Scope for Mac
 summary: Scope scans a full SSD in under a minute and draws every folder as a map you can read. Find what takes the space, see what getting it back would cost, then send it to the Trash.
+structuredData:
+  "@context": https://schema.org
+  "@type": SoftwareApplication
+  name: Scope
+  description: Disk space analyser for macOS
+  url: https://ayeo.io/scope
+  applicationCategory: UtilitiesApplication
+  operatingSystem: macOS 14 or later
+  downloadUrl: https://apps.apple.com/app/id6830725423
+  installUrl: https://apps.apple.com/app/id6830725423
+  image: https://ayeo.io/assets/scope/icon.png
+  screenshot:
+    - https://ayeo.io/assets/scope/1-map.png
+    - https://ayeo.io/assets/scope/2-3d.png
+    - https://ayeo.io/assets/scope/6-trash.png
+  softwareHelp:
+    "@type": WebPage
+    url: https://ayeo.io/scope/support
+  publisher:
+    "@type": Organization
+    name: Ayeo Ltd
+    url: https://ayeo.io
 ---
 {#- The copy is docs/website/product.md in ayeo-io/scope, word for word, with
     its sections in the same order. product.html beside it sets where the
@@ -12,8 +34,8 @@ summary: Scope scans a full SSD in under a minute and draws every folder as a ma
     /scope/privacy, so keep those addresses. The download links are text:
     Apple's App Store badge has its own marketing rules. -#}
 {%- set appStore = "https://apps.apple.com/app/id6830725423" %}
-<div class="scope">
-  <section class="band scope-hero">
+<article class="scope">
+  <header class="band scope-hero">
     <div class="wrap">
       <div class="scope-mast">
         <img src="/assets/scope/icon.png" alt="" width="56" height="56">
@@ -27,35 +49,35 @@ summary: Scope scans a full SSD in under a minute and draws every folder as a ma
       </div>
       <img class="scope-shot" src="/assets/scope/1-map.png" alt="Scope's window showing a 1 TB volume as a treemap, with Users, Applications and Library as the largest rectangles, and a summary reading 100.5 GB you could clear, 57.1 GB of it in under a minute" width="1440" height="900">
     </div>
-  </section>
+  </header>
 
-  <section class="section">
+  <div class="section">
     <div class="wrap scope-reasons">
       <p><strong>Fast.</strong> The map appears within a second and fills in as the scan runs. Nine million entries scan in 35 seconds on an M4 Pro.</p>
       <p><strong>Honest.</strong> A folder Scope cannot read is drawn and counted, not skipped. Sizes are what files take on disk, and every size says what clearing it frees. The total says what it could and could not see, and "Elsewhere on this disk" breaks down the rest.</p>
       <p><strong>Yours.</strong> No account, no network, no telemetry. Your scan never leaves your Mac. Scope moves nothing without asking, and never runs a command.</p>
     </div>
-  </section>
+  </div>
 
-  <section class="band">
+  <section class="band" aria-labelledby="two-ways">
     <div class="wrap">
-      <h2>Two ways to look</h2>
+      <h2 id="two-ways">Two ways to look</h2>
       <div class="scope-pair">
-        <div>
+        <figure>
           <img class="scope-shot" src="/assets/scope/3-types.png" alt="The Developer folder as a flat treemap coloured by file type" width="1440" height="900" loading="lazy">
-          <p><strong>The flat map.</strong> A treemap in the classic SpaceMonger style: every folder a labelled rectangle sized by what it holds, its subfolders nested inside. Click to zoom in; the breadcrumb takes you back.</p>
-        </div>
-        <div>
+          <figcaption><strong>The flat map.</strong> A treemap in the classic SpaceMonger style: every folder a labelled rectangle sized by what it holds, its subfolders nested inside. Click to zoom in; the breadcrumb takes you back.</figcaption>
+        </figure>
+        <figure>
           <img class="scope-shot" src="/assets/scope/4-3d-types.png" alt="The same Developer folder as a 3D platter of blocks, coloured by file type" width="1440" height="900" loading="lazy">
-          <p><strong>The 3D map.</strong> The same disk as a platter of blocks. Orbit, zoom and pan. Each block's height is its size, or its age. Switch with one click and keep your place, your selection and your filters.</p>
-        </div>
+          <figcaption><strong>The 3D map.</strong> The same disk as a platter of blocks. Orbit, zoom and pan. Each block's height is its size, or its age. Switch with one click and keep your place, your selection and your filters.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" aria-labelledby="colour">
     <div class="wrap">
-      <h2>Colour it the way you need</h2>
+      <h2 id="colour">Colour it the way you need</h2>
       <ul class="scope-modes">
         <li class="mode-depth"><strong>Depth</strong> shows how deep each folder sits.</li>
         <li class="mode-type"><strong>Type</strong> tells code, build output and caches, media, archives and images, apps, and models and data apart.</li>
@@ -73,9 +95,9 @@ summary: Scope scans a full SSD in under a minute and draws every folder as a ma
     </div>
   </section>
 
-  <section class="band">
+  <section class="band" aria-labelledby="free">
     <div class="wrap">
-      <h2>Free the space, carefully</h2>
+      <h2 id="free">Free the space, carefully</h2>
       <div class="scope-pair">
         <ul class="scope-list">
           <li><strong>Move to Trash</strong>, one entry or a selection of several, with Undo. The sheet names the path, the size and what the space comes back as, and warns before data macOS or your apps keep, or a worktree with changes not yet committed.</li>
@@ -89,9 +111,9 @@ summary: Scope scans a full SSD in under a minute and draws every folder as a ma
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" aria-labelledby="keep">
     <div class="wrap">
-      <h2>Keep it from filling again</h2>
+      <h2 id="keep">Keep it from filling again</h2>
       <ul class="scope-cards">
         <li><strong>Watch</strong> a volume and a menu bar item reads the free space and says when the disk will be full. Its menu lists the five fastest-growing folders with their rate. A notification warns when the forecast falls under your threshold, or when one file grows fast; choosing it opens Scope at the cause.</li>
         <li><strong>Standing orders</strong> are rules you write once: agent worktrees not changed for 14 days with nothing left to commit, build output of projects not changed for 60 days, package folders of projects not changed for 90 days. A rule moves nothing on its own. The weekly review lists what the rules match, you approve, and one Undo puts it all back.</li>
@@ -99,24 +121,24 @@ summary: Scope scans a full SSD in under a minute and draws every folder as a ma
       </ul>
 
       <div class="scope-pair scope-pair-text">
-        <div>
-          <h2>Put a project to sleep</h2>
+        <section aria-labelledby="sleep">
+          <h2 id="sleep">Put a project to sleep</h2>
           <p>The Developer view lists the projects on the disk with what could be cleared and when you last worked on them. <strong>Hibernate</strong> moves what can be rebuilt to the Trash, keeps your own files and anything not yet committed, and leaves a receipt in the project that names the build command. Undo wakes it.</p>
-        </div>
-        <div>
-          <h2>Hand it over</h2>
+        </section>
+        <section aria-labelledby="hand">
+          <h2 id="hand">Hand it over</h2>
           <ul class="scope-plain">
             <li><strong>Export Summary</strong> writes the 300 largest folders and the totals as text to paste, or every folder as JSON, with your folder names hidden if you choose. Nothing is sent anywhere.</li>
             <li><strong>Elsewhere on this disk</strong> explains the space the disk says is used that the scan did not find: other volumes, local snapshots by date, the folders Scope could not read, and what is left, named as such.</li>
           </ul>
-        </div>
+        </section>
       </div>
     </div>
   </section>
 
-  <section class="band">
+  <section class="band" aria-labelledby="ai">
     <div class="wrap">
-      <h2>Made for people whose AI tools fill the disk</h2>
+      <h2 id="ai">Made for people whose AI tools fill the disk</h2>
       <ul class="scope-list">
         <li><strong>Colour by Clearable</strong> picks out what a coding agent leaves: its worktrees and the virtual environments, build output and package caches around them. Each says what getting it back would cost.</li>
         <li><strong>Colour by Origin</strong> says which tool wrote each folder, so you see what the agent, the model runner and the container engine each take.</li>
@@ -129,9 +151,9 @@ summary: Scope scans a full SSD in under a minute and draws every folder as a ma
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" aria-labelledby="developers">
     <div class="wrap scope-text">
-      <h2>Made for developers, good for everyone</h2>
+      <h2 id="developers">Made for developers, good for everyone</h2>
       <p><code>node_modules</code>, <code>DerivedData</code>, <code>.venv</code>, agent worktrees and package caches are what quietly fill a developer's disk, and Scope shows them first. The same map finds the forgotten video exports and the photo library you copied twice.</p>
       <p>Using a coding agent? <a href="https://ayeo.io/scope/connector">Scope for agents</a> lets it ask before it fills the disk, and lets you decide what goes.</p>
 
@@ -144,11 +166,11 @@ summary: Scope scans a full SSD in under a minute and draws every folder as a ma
     </div>
   </section>
 
-  <section class="scope-foot">
+  <footer class="scope-foot">
     <div class="wrap">
       <p>Requires macOS 14 or later. The 3D map needs Metal.</p>
       <p><a href="https://ayeo.io/scope/support">Support</a> · <a href="https://ayeo.io/scope/accessibility">Accessibility</a> · <a href="https://ayeo.io/scope/privacy">Privacy policy</a> · <a href="mailto:support@ayeo.io">support@ayeo.io</a></p>
       <p>© 2026 Ayeo Ltd</p>
     </div>
-  </section>
-</div>
+  </footer>
+</article>

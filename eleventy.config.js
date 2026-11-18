@@ -50,6 +50,10 @@ export default function (eleventyConfig) {
   // because the App Store listing and the app's privacy label use the same
   // wording. The first line is the page title, so the page layout shows it
   // and this filter drops it.
+  // Structured data goes in a <script type="application/ld+json"> data block.
+  // Escaping "<" keeps any text from closing that tag early.
+  eleventyConfig.addFilter("jsonLd", (data) => JSON.stringify(data).replace(/</g, "\\u003c"));
+
   eleventyConfig.addFilter("scopeDoc", (name) => {
     const source = readFileSync(`src/_includes/scope/${name}.md`, "utf8");
     return scopeMarkdown.render(source.replace(/^# .*\n/, ""));

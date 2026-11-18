@@ -4,17 +4,29 @@ permalink: /scope/support.html
 canonicalPath: /scope/support
 title: Scope support
 summary: Scope shows you where your disk has gone. This page answers the questions we get most.
+structuredData:
+  "@context": https://schema.org
+  "@type": BreadcrumbList
+  itemListElement:
+    - "@type": ListItem
+      position: 1
+      name: Scope
+      item: https://ayeo.io/scope
+    - "@type": ListItem
+      position: 2
+      name: Scope support
+      item: https://ayeo.io/scope/support
 ---
 {#- The text comes from src/_includes/scope/support.md, a copy of
     docs/website/support.md in ayeo-io/scope. Change it there first. The page
     is served at /scope/support because the App Store listing links to that
     address, and the app's Help menu opens it. -#}
-<section class="section scope-doc">
+<article class="section scope-doc">
   <div class="wrap">
-    <p class="scope-crumb"><a href="/scope">Scope</a></p>
+    <nav class="scope-crumb" aria-label="Breadcrumb"><a href="/scope">Scope</a></nav>
     <h1>Scope support</h1>
     <div class="prose">
       {{ "support" | scopeDoc | safe }}
     </div>
   </div>
-</section>
+</article>

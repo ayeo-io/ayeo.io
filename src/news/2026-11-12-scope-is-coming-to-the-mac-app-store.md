@@ -15,7 +15,7 @@ faq:
   - q: "Does my scan leave my Mac?"
     a: "No. Scope makes no network connections, and there is no analytics, crash reporting or telemetry. The [privacy policy](/scope/privacy) has the details."
   - q: "Will it clean my Mac for me?"
-    a: "No. Scope is not a cleaner, an optimiser or a duplicate finder. It shows you the disk; what you delete is your call. When you do delete something, it goes to the Trash, with Undo."
+    a: "No. Scope names what you could clear and what getting it back would cost, then does what you pick. It never picks for you, and it never runs a command. When you do delete something, it goes to the Trash, with Undo."
   - q: "When can I get it?"
     a: "When it is live on the Mac App Store. We'll update this post then, and the [Scope page](/scope) will link to the listing."
 ---
