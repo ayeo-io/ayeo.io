@@ -596,6 +596,20 @@ svg text { font-size: 14px; }
 .mode-age { --swatch: #b08d2c; }
 .mode-clearable { --swatch: #5b9c5a; }
 .mode-change { --swatch: #8b5bb3; }
+.mode-growth { --swatch: #c0392b; }
+.mode-origin { --swatch: #5b6472; }
+.scope-cards { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); }
+.scope-cards li { border: 1px solid var(--rule); border-radius: var(--radius); background: var(--paper-2); padding: 1rem 1.15rem; color: var(--ink-2); min-width: 0; }
+.scope-cards strong { color: var(--ink); }
+.scope-pair-text { margin-top: clamp(2.5rem, 5vw, 3.5rem); gap: 2rem clamp(2rem, 4vw, 3rem); }
+.scope-pair-text p { margin: 1rem 0 0; color: var(--ink-2); }
+.scope-pair-text strong { color: var(--ink); }
+.scope-plain { margin: 1rem 0 0; padding-left: 1.2rem; color: var(--ink-2); }
+.scope-plain li { margin-bottom: 0.6rem; }
+.scope-shot-after { margin-top: 2rem; }
+.scope-text code { font-family: var(--mono); font-size: 0.92em; }
+.scope-doc blockquote { margin: 1rem 0; padding: 0.25rem 0 0.25rem 1.1rem; border-left: 4px solid var(--link); }
+.scope-doc .prose { max-width: 42em; }
 .scope-note { color: var(--ink-2); max-width: 38em; }
 .scope-list { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: 0.9rem; max-width: 42em; }
 .scope-list li { position: relative; padding-left: 1.4rem; color: var(--panel-text); }

@@ -1,0 +1,42 @@
+---
+layout: base.njk
+permalink: /scope/connector.html
+canonicalPath: /scope/connector
+title: Scope for agents
+summary: Scope for agents is a small connector that gives Claude Code and Claude Desktop a sense of the disk. Nothing moves until you say so, and nothing is ever erased.
+---
+{#- The copy is docs/website/connector.md in ayeo-io/scope. The hero and the
+    footer are laid out here, word for word; the sections between them come
+    from src/_includes/scope/connector.md, a copy of that file. Change it there
+    first. -#}
+<div class="scope">
+  <section class="band scope-hero">
+    <div class="wrap">
+      <div class="scope-mast">
+        <img src="/assets/scope/icon.png" alt="" width="56" height="56">
+        <p><strong>Scope for agents</strong><br><span>Let your coding agent ask before it fills the disk</span></p>
+      </div>
+      <p class="scope-lede">Agents write until zero bytes are free, then lose their own settings. Scope for agents is a small connector that gives Claude Code and Claude Desktop a sense of the disk: how much is free, what the budget is, what was left behind, and what could be cleared and how it comes back. Nothing moves until you say so, and nothing is ever erased.</p>
+      <div class="scope-cta">
+        <a class="button" href="https://ayeo.io/scope/connector/scope.mcpb">Download Scope for agents</a>
+        <p>Runs on node 18 or later · Free · No account, no network</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section scope-doc">
+    <div class="wrap">
+      <div class="prose">
+        {{ "connector" | scopeSections("What an agent can ask", "Footer") | safe }}
+      </div>
+    </div>
+  </section>
+
+  <section class="scope-foot">
+    <div class="wrap">
+      <p>Requires node 18 or later. Claude Code 2.1.76 or later asks you about proposals. In an older version, and in any host that cannot ask, a proposal is refused: nothing moves, and the agent is told to ask you itself.</p>
+      <p><a href="https://ayeo.io/scope">Scope</a> · <a href="https://ayeo.io/scope/support">Support</a> · <a href="https://ayeo.io/scope/privacy">Privacy policy</a> · <a href="mailto:support@ayeo.io">support@ayeo.io</a></p>
+      <p>© 2026 Ayeo Ltd</p>
+    </div>
+  </section>
+</div>

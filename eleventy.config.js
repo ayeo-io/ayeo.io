@@ -55,6 +55,16 @@ export default function (eleventyConfig) {
     return scopeMarkdown.render(source.replace(/^# .*\n/, ""));
   });
 
+  // The connector copy carries its own hero and footer, which the page
+  // template lays out; this renders the sections between them.
+  eleventyConfig.addFilter("scopeSections", (name, from, to) => {
+    const source = readFileSync(`src/_includes/scope/${name}.md`, "utf8");
+    const start = source.indexOf(`\n## ${from}\n`);
+    const end = source.indexOf(`\n## ${to}\n`);
+    if (start < 0 || end < start) throw new Error(`scopeSections: ${name}.md has no "## ${from}" before "## ${to}"`);
+    return scopeMarkdown.render(source.slice(start, end));
+  });
+
   eleventyConfig.addPlugin(feedPlugin, {
     type: "atom",
     outputPath: "/news/feed.xml",
